@@ -3,18 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Banco Interactivo de Tareas Temple</title>
 
   <style>
     :root {
-      --verde: #476253;
-      --azul: #4C6789;
-      --beige: #EDE8E1;
-      --texto: #26332c;
-      --gris: #6f7772;
-      --blanco: #ffffff;
-      --borde: #dfe4df;
-      --fondo: #f8f8f6;
+      --azul-principal: #4C6789;
+      --azul-oscuro: #354D6B;
+      --azul-claro: #EAF0F6;
+      --azul-suave: #F4F7FA;
+
+      --texto: #26333F;
+      --texto-suave: #6D7782;
+
+      --blanco: #FFFFFF;
+      --borde: #DCE3EA;
+      --fondo: #F7F9FB;
+
+      --favorito: #D5A84B;
     }
 
     * {
@@ -30,263 +36,514 @@
       line-height: 1.5;
     }
 
+    button,
+    input,
+    select {
+      font-family: inherit;
+    }
+
     .contenedor {
-      width: min(1100px, 92%);
+      width: min(1120px, 92%);
       margin: 0 auto;
     }
 
+    /* =========================
+       ENCABEZADO
+    ========================= */
+
     header {
-      background: var(--verde);
+      background: var(--azul-principal);
       color: white;
-      padding: 42px 0;
+      padding: 46px 0 70px;
     }
 
-    .etiqueta {
-      font-size: 14px;
-      letter-spacing: 0.5px;
+    .marca {
+      font-size: 13px;
+      letter-spacing: 1px;
       opacity: 0.85;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      font-weight: 600;
     }
 
-    h1 {
-      font-size: clamp(30px, 5vw, 46px);
-      line-height: 1.1;
-      margin-bottom: 12px;
+    header h1 {
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1.12;
+      max-width: 700px;
+      margin-bottom: 14px;
+      font-weight: 700;
     }
 
     .subtitulo {
+      font-size: 16px;
       max-width: 650px;
-      font-size: 17px;
       opacity: 0.92;
     }
 
-    .busqueda {
-      background: white;
-      padding: 22px;
-      border-radius: 16px;
-      margin-top: -25px;
+    /* =========================
+       BUSCADOR
+    ========================= */
+
+    .zona-busqueda {
+      margin-top: -32px;
       position: relative;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.06);
     }
 
-    .busqueda input {
-      width: 100%;
-      padding: 15px 18px;
+    .busqueda {
+      background: var(--blanco);
       border: 1px solid var(--borde);
-      border-radius: 10px;
-      font-size: 16px;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 8px 25px rgba(53, 77, 107, 0.08);
+    }
+
+    .buscador {
+      width: 100%;
+      border: 1px solid var(--borde);
+      border-radius: 11px;
+      padding: 15px 17px;
+      font-size: 15px;
+      color: var(--texto);
       outline: none;
+      background: white;
     }
 
-    .busqueda input:focus {
-      border-color: var(--verde);
+    .buscador:focus {
+      border-color: var(--azul-principal);
+      box-shadow: 0 0 0 3px rgba(76, 103, 137, 0.10);
     }
 
-    .contenido {
-      padding: 35px 0 60px;
+    /* =========================
+       CONTENIDO
+    ========================= */
+
+    main {
+      padding-bottom: 70px;
     }
 
-    .barra-superior {
+    .encabezado-resultados {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 15px;
-      margin-bottom: 22px;
+      margin: 34px 0 18px;
       flex-wrap: wrap;
     }
 
-    .resultado {
-      color: var(--gris);
+    .titulo-seccion {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .contador {
+      color: var(--texto-suave);
       font-size: 14px;
     }
 
+    /* =========================
+       FILTROS
+    ========================= */
+
     .filtros {
+      background: white;
+      border: 1px solid var(--borde);
+      border-radius: 16px;
+      padding: 17px;
+      margin-bottom: 25px;
+    }
+
+    .filtros-titulo {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--texto-suave);
+      margin-bottom: 12px;
+    }
+
+    .filtros-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 12px;
-      margin-bottom: 28px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
     }
 
     select {
       width: 100%;
-      padding: 12px;
+      padding: 11px 12px;
       border: 1px solid var(--borde);
-      border-radius: 10px;
+      border-radius: 9px;
       background: white;
       color: var(--texto);
       font-size: 14px;
+      cursor: pointer;
+      outline: none;
     }
+
+    select:focus {
+      border-color: var(--azul-principal);
+    }
+
+    .fila-acciones {
+      display: flex;
+      gap: 9px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .boton-filtro {
+      border: 1px solid var(--borde);
+      background: white;
+      color: var(--texto);
+      padding: 9px 14px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+
+    .boton-filtro.activo {
+      background: var(--azul-claro);
+      border-color: var(--azul-principal);
+      color: var(--azul-oscuro);
+      font-weight: 600;
+    }
+
+    /* =========================
+       TARJETAS
+    ========================= */
 
     .tarjetas {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 18px;
     }
 
     .tarjeta {
       background: white;
       border: 1px solid var(--borde);
-      border-radius: 16px;
+      border-radius: 17px;
       padding: 22px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      min-width: 0;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
 
-    .tarjeta-etapa {
-      color: var(--azul);
-      font-size: 13px;
-      font-weight: bold;
+    .tarjeta:hover {
+      border-color: #C8D4E0;
+      box-shadow: 0 7px 20px rgba(53, 77, 107, 0.06);
+    }
+
+    .tarjeta-cabecera {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: flex-start;
+    }
+
+    .etapa {
+      color: var(--azul-principal);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .boton-favorito {
+      width: 38px;
+      height: 38px;
+      flex-shrink: 0;
+      border-radius: 50%;
+      border: 1px solid var(--borde);
+      background: white;
+      color: #9BA4AD;
+      cursor: pointer;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .boton-favorito.activo {
+      color: var(--favorito);
+      background: #FFF8E9;
+      border-color: #EAD9AE;
     }
 
     .tarjeta h2 {
       font-size: 20px;
       line-height: 1.3;
+      margin: 12px 0 15px;
     }
 
-    .metadatos {
+    .datos-tarjeta {
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
+      margin-bottom: 15px;
     }
 
-    .etiqueta-chip {
-      background: var(--beige);
-      color: var(--texto);
-      padding: 5px 9px;
+    .chip {
+      background: var(--azul-suave);
+      color: var(--azul-oscuro);
       border-radius: 20px;
+      padding: 5px 9px;
       font-size: 12px;
     }
 
-    .boton {
+    .temas {
+      color: var(--texto-suave);
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .boton-ver {
+      width: 100%;
       border: none;
-      background: var(--verde);
+      background: var(--azul-principal);
       color: white;
-      padding: 11px 16px;
+      padding: 12px 16px;
       border-radius: 9px;
       cursor: pointer;
       font-size: 14px;
+      font-weight: 600;
       margin-top: auto;
     }
 
-    .boton:hover {
-      opacity: 0.9;
+    .boton-ver:hover {
+      background: var(--azul-oscuro);
     }
 
+    /* =========================
+       SIN RESULTADOS
+    ========================= */
+
     .vacio {
-      text-align: center;
-      padding: 50px 20px;
-      color: var(--gris);
+      grid-column: 1 / -1;
       background: white;
-      border-radius: 16px;
       border: 1px solid var(--borde);
+      border-radius: 16px;
+      text-align: center;
+      padding: 55px 20px;
+      color: var(--texto-suave);
     }
+
+    /* =========================
+       MODAL
+    ========================= */
 
     .modal-fondo {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(0,0,0,0.45);
+      background: rgba(28, 40, 53, 0.55);
       padding: 20px;
       overflow-y: auto;
-      z-index: 10;
+      z-index: 100;
+    }
+
+    .modal-fondo.visible {
+      display: block;
     }
 
     .modal {
-      max-width: 800px;
-      margin: 40px auto;
+      width: min(850px, 100%);
+      margin: 25px auto;
       background: white;
-      border-radius: 18px;
-      padding: 30px;
+      border-radius: 20px;
+      padding: 32px;
       position: relative;
     }
 
     .cerrar {
       position: absolute;
       top: 15px;
-      right: 18px;
+      right: 17px;
+      width: 40px;
+      height: 40px;
       border: none;
-      background: transparent;
-      font-size: 25px;
+      background: var(--azul-suave);
+      border-radius: 50%;
+      color: var(--azul-oscuro);
+      font-size: 24px;
       cursor: pointer;
-      color: var(--gris);
+    }
+
+    .modal-etapa {
+      color: var(--azul-principal);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 9px;
     }
 
     .modal h2 {
-      font-size: 28px;
+      font-size: clamp(25px, 4vw, 34px);
       line-height: 1.25;
-      padding-right: 35px;
-      margin-bottom: 20px;
+      padding-right: 45px;
+      margin-bottom: 22px;
     }
 
-    .seccion {
-      margin-top: 25px;
-    }
-
-    .seccion h3 {
-      color: var(--verde);
-      font-size: 15px;
-      margin-bottom: 9px;
-      text-transform: uppercase;
-      letter-spacing: 0.4px;
-    }
-
-    .seccion p {
-      color: var(--texto);
-    }
-
-    .seccion ul {
-      padding-left: 22px;
-    }
-
-    .seccion li {
-      margin-bottom: 8px;
-    }
-
-    .datos {
-      background: var(--beige);
-      padding: 16px;
-      border-radius: 12px;
+    .datos-modal {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      margin-bottom: 20px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--borde);
+      border: 1px solid var(--borde);
+      border-radius: 13px;
+      overflow: hidden;
+      margin-bottom: 30px;
+    }
+
+    .dato {
+      background: var(--azul-suave);
+      padding: 13px 15px;
     }
 
     .dato strong {
       display: block;
-      font-size: 12px;
-      color: var(--gris);
-      margin-bottom: 2px;
+      font-size: 10px;
+      color: var(--texto-suave);
+      letter-spacing: 0.5px;
+      margin-bottom: 3px;
     }
 
     .dato span {
+      font-size: 13px;
+    }
+
+    .seccion {
+      margin-top: 28px;
+    }
+
+    .seccion h3 {
+      color: var(--azul-principal);
       font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .seccion p {
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    .seccion ul {
+      padding-left: 21px;
+    }
+
+    .seccion li {
+      margin-bottom: 9px;
+      font-size: 15px;
     }
 
     .variacion {
-      border-left: 3px solid var(--azul);
-      padding: 10px 0 10px 15px;
-      margin-bottom: 12px;
+      background: var(--azul-suave);
+      border-radius: 11px;
+      padding: 13px 15px;
+      margin-bottom: 9px;
     }
 
     .variacion strong {
       display: block;
+      color: var(--azul-oscuro);
       margin-bottom: 3px;
+      font-size: 14px;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 32px 0;
+    .variacion span {
+      font-size: 14px;
+    }
+
+    .acciones-modal {
+      display: flex;
+      gap: 10px;
+      margin-top: 30px;
+      padding-top: 22px;
+      border-top: 1px solid var(--borde);
+      flex-wrap: wrap;
+    }
+
+    .accion {
+      border: 1px solid var(--borde);
+      background: white;
+      color: var(--texto);
+      padding: 11px 15px;
+      border-radius: 9px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    .accion:hover {
+      background: var(--azul-suave);
+    }
+
+    .accion.favorito-activo {
+      color: var(--favorito);
+      border-color: #EAD9AE;
+      background: #FFF8E9;
+    }
+
+    /* =========================
+       AVISO COPIADO
+    ========================= */
+
+    .aviso-copiado {
+      position: fixed;
+      left: 50%;
+      bottom: 25px;
+      transform: translateX(-50%);
+      background: var(--azul-oscuro);
+      color: white;
+      padding: 11px 18px;
+      border-radius: 9px;
+      font-size: 14px;
+      display: none;
+      z-index: 200;
+    }
+
+    .aviso-copiado.visible {
+      display: block;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 750px) {
+
+      .filtros-grid {
+        grid-template-columns: 1fr 1fr;
       }
 
-      .busqueda {
-        margin-top: -18px;
+      .tarjetas {
+        grid-template-columns: 1fr;
+      }
+
+      .modal {
+        padding: 25px 20px;
+      }
+    }
+
+    @media (max-width: 500px) {
+
+      header {
+        padding: 36px 0 60px;
+      }
+
+      .filtros-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .datos-modal {
+        grid-template-columns: 1fr;
+      }
+
+      .modal-fondo {
+        padding: 10px;
       }
 
       .modal {
         margin: 10px auto;
-        padding: 22px;
       }
     }
   </style>
@@ -294,34 +551,65 @@
 
 <body>
 
-  <header>
-    <div class="contenedor">
-      <div class="etiqueta">TEMPLE · RECURSOS PARA PROFESIONALES</div>
-      <h1>Banco Interactivo de Tareas</h1>
-      <p class="subtitulo">
-        Explora tareas organizadas para acompañar diferentes momentos del proceso terapéutico.
-      </p>
-    </div>
-  </header>
+<header>
+  <div class="contenedor">
 
-  <main class="contenedor">
+    <div class="marca">
+      TEMPLE · RECURSOS PARA PROFESIONALES
+    </div>
+
+    <h1>
+      Banco Interactivo de Tareas
+    </h1>
+
+    <p class="subtitulo">
+      Explora tareas organizadas para acompañar diferentes momentos del proceso terapéutico.
+    </p>
+
+  </div>
+</header>
+
+
+<main>
+
+  <div class="contenedor zona-busqueda">
 
     <div class="busqueda">
+
       <input
         type="search"
         id="buscador"
-        placeholder="🔎 Buscar una tarea..."
+        class="buscador"
+        placeholder="🔎 Buscar una tarea, tema o concepto..."
       >
+
     </div>
 
-    <section class="contenido">
+  </div>
 
-      <div class="barra-superior">
-        <strong>Tareas disponibles</strong>
-        <span class="resultado" id="contador"></span>
+
+  <div class="contenedor">
+
+    <div class="encabezado-resultados">
+
+      <div class="titulo-seccion">
+        Explora las tareas
       </div>
 
-      <div class="filtros">
+      <div class="contador" id="contador">
+        0 tareas
+      </div>
+
+    </div>
+
+
+    <div class="filtros">
+
+      <div class="filtros-titulo">
+        FILTRAR POR
+      </div>
+
+      <div class="filtros-grid">
 
         <select id="filtroModulo">
           <option value="">Todos los módulos</option>
@@ -349,455 +637,1211 @@
 
       </div>
 
-      <div class="tarjetas" id="tarjetas"></div>
 
-    </section>
+      <div class="fila-acciones">
 
-  </main>
+        <button
+          type="button"
+          id="botonFavoritos"
+          class="boton-filtro"
+        >
+          ⭐ Solo favoritas
+        </button>
 
-  <div class="modal-fondo" id="modalFondo">
-
-    <div class="modal">
-
-      <button class="cerrar" id="cerrarModal">×</button>
-
-      <h2 id="modalTitulo"></h2>
-
-      <div class="datos" id="modalDatos"></div>
-
-      <div class="seccion">
-        <h3>¿En qué consiste?</h3>
-        <p id="modalConsiste"></p>
       </div>
 
-      <div class="seccion">
-        <h3>Objetivo</h3>
-        <p id="modalObjetivo"></p>
-      </div>
+    </div>
 
-      <div class="seccion">
-        <h3>Indicaciones</h3>
-        <div id="modalIndicaciones"></div>
-      </div>
 
-      <div class="seccion">
-        <h3>Variaciones</h3>
-        <div id="modalVariaciones"></div>
-      </div>
+    <div class="tarjetas" id="tarjetas"></div>
 
-      <div class="seccion">
-        <h3>Para revisar en sesión</h3>
-        <p id="modalRevision"></p>
-      </div>
+  </div>
+
+</main>
+
+
+<!-- MODAL -->
+
+<div class="modal-fondo" id="modalFondo">
+
+  <div class="modal">
+
+    <button
+      type="button"
+      class="cerrar"
+      id="cerrarModal"
+      aria-label="Cerrar"
+    >
+      ×
+    </button>
+
+    <div class="modal-etapa" id="modalEtapa"></div>
+
+    <h2 id="modalTitulo"></h2>
+
+    <div class="datos-modal" id="modalDatos"></div>
+
+
+    <div class="seccion">
+
+      <h3>¿En qué consiste?</h3>
+
+      <p id="modalConsiste"></p>
+
+    </div>
+
+
+    <div class="seccion">
+
+      <h3>Objetivo</h3>
+
+      <p id="modalObjetivo"></p>
+
+    </div>
+
+
+    <div class="seccion">
+
+      <h3>Indicaciones</h3>
+
+      <div id="modalIndicaciones"></div>
+
+    </div>
+
+
+    <div class="seccion">
+
+      <h3>Variaciones</h3>
+
+      <div id="modalVariaciones"></div>
+
+    </div>
+
+
+    <div class="seccion">
+
+      <h3>Para revisar en sesión</h3>
+
+      <p id="modalRevision"></p>
+
+    </div>
+
+
+    <div class="acciones-modal">
+
+      <button
+        type="button"
+        id="modalFavorito"
+        class="accion"
+      >
+        ⭐ Agregar a favoritos
+      </button>
+
+      <button
+        type="button"
+        id="modalCopiar"
+        class="accion"
+      >
+        📋 Copiar tarea
+      </button>
 
     </div>
 
   </div>
 
-  <script>
-
-    const tareas = [
-
-      {
-        id: 1,
-        tarea: "Construir mi plan personal para mantener los cambios",
-        modulo: "Módulo 5 • Recursos cambio e integración",
-        etapa: "Integración final",
-        temas: ["Continuidad", "Integración", "Prevención", "Recursos"],
-        variaciones: ["Afrontamiento", "Ansiedad", "Autocuidado", "Autoestima", "Hábitos", "Relaciones"],
-        enfoque: "Individual y pareja",
-        tipoTarea: "Plan de mantenimiento",
-        frecuencia: "Una vez",
-        materiales: "Hoja o notas del celular",
-
-        consiste: "Construir un plan personal y breve que reúna los cambios que se quieren mantener, los recursos disponibles y las acciones que pueden realizarse ante futuras dificultades.",
-
-        objetivo: "Integrar el trabajo realizado en un plan práctico que permita mantener los cambios y responder ante posibles dificultades futuras.",
-
-        indicaciones: [
-          "Los cambios que quiero mantener.",
-          "Las conductas que los sostienen.",
-          "Los recursos que quiero conservar.",
-          "Las señales que me indican que necesito prestar atención.",
-          "Lo que puedo hacer si aparece una dificultad.",
-          "Las personas o recursos externos a los que puedo recurrir.",
-          "Lo que quiero seguir construyendo.",
-          "Keep the plan brief and practical; it should be something the person can consult/use."
-        ],
-
-        variacionesDetalle: [
-          { nombre: "Ansiedad", texto: "incluir señales tempranas y estrategias de afrontamiento." },
-          { nombre: "Autoestima", texto: "incluir conductas que favorezcan una relación más equilibrada contigo mismo/a." },
-          { nombre: "Relaciones", texto: "incorporar recursos de comunicación, límites y reparación." },
-          { nombre: "Hábitos", texto: "establecer las prácticas que quieres mantener." },
-          { nombre: "Autocuidado", texto: "incluir necesidades y conductas que quieres continuar priorizando." },
-          { nombre: "Afrontamiento", texto: "reunir las estrategias que puedes utilizar ante futuras dificultades." }
-        ],
-
-        revision: "Revisar el plan completo, priorizar los elementos esenciales y verificar que pueda utilizarse de manera autónoma y realista."
-      },
-
-      {
-        id: 2,
-        tarea: "Reconocer qué aprendí sobre la manera en que puedo afrontar las dificultades",
-        modulo: "Módulo 5 • Recursos cambio e integración",
-        etapa: "Reflexionar",
-        temas: ["Afrontamiento", "Aprendizaje", "Autoconocimiento", "Integración"],
-        variaciones: ["Ansiedad", "Autoestima", "Cambios vitales", "Estrés", "Relaciones"],
-        enfoque: "Individual y pareja",
-        tipoTarea: "Integración de aprendizajes",
-        frecuencia: "Una vez",
-        materiales: "Hoja o notas del celular",
-
-        consiste: "Reflexionar sobre los principales aprendizajes relacionados con la propia capacidad para afrontar dificultades.",
-
-        objetivo: "Consolidar una comprensión más clara de los recursos personales desarrollados durante el proceso.",
-
-        indicaciones: [
-          "Antes pensaba que para afrontar una dificultad necesitaba…",
-          "Ahora sé que también puedo…",
-          "Un recurso que antes no utilizaba y ahora puedo utilizar es…",
-          "Cuando vuelva a aparecer una dificultad, quiero recordar…",
-          "Algo que todavía quiero seguir practicando es…",
-          "Write concrete answers based on real experiences."
-        ],
-
-        variacionesDetalle: [
-          { nombre: "Ansiedad", texto: "reconocer nuevas formas de responder al malestar." },
-          { nombre: "Estrés", texto: "identificar aprendizajes sobre el manejo de demandas." },
-          { nombre: "Relaciones", texto: "reconocer cambios en la manera de afrontar dificultades interpersonales." },
-          { nombre: "Autoestima", texto: "identificar aprendizajes sobre la propia capacidad." },
-          { nombre: "Cambios vitales", texto: "reconocer recursos desarrollados durante períodos de adaptación." }
-        ],
-
-        revision: "Integrar los aprendizajes principales y diferenciar aquello que ya se siente incorporado de lo que todavía requiere práctica."
-      },
-
-      {
-        id: 3,
-        tarea: "Elegir qué quiero seguir practicando después de terminar este proceso",
-        modulo: "Módulo 5 • Recursos cambio e integración",
-        etapa: "Continuidad",
-        temas: ["Cambio", "Continuidad", "Objetivos", "Práctica"],
-        variaciones: ["Ansiedad", "Autocuidado", "Autoestima", "Organización", "Relaciones"],
-        enfoque: "Individual y pareja",
-        tipoTarea: "Plan de continuidad",
-        frecuencia: "Una vez",
-        materiales: "Hoja o notas del celular",
-
-        consiste: "Elegir uno o dos aspectos que la persona quiera continuar practicando después de finalizar el proceso.",
-
-        objetivo: "Transformar el cierre del proceso en una continuidad práctica de los aprendizajes.",
-
-        indicaciones: [
-          "Elige hasta dos aspectos que quieras seguir desarrollando.",
-          "¿Qué quiero seguir practicando?",
-          "¿Por qué es importante?",
-          "¿Qué conducta concreta puedo mantener?",
-          "¿Cómo sabré que estoy avanzando?",
-          "Avoid turning it into an extensive list of objectives."
-        ],
-
-        variacionesDetalle: [
-          { nombre: "Ansiedad", texto: "continuar practicando nuevas formas de afrontamiento." },
-          { nombre: "Autoestima", texto: "mantener conductas de valoración y cuidado personal." },
-          { nombre: "Relaciones", texto: "continuar fortaleciendo formas de comunicación." },
-          { nombre: "Autocuidado", texto: "conservar prácticas importantes para el bienestar." },
-          { nombre: "Organización", texto: "mantener estrategias que favorezcan el funcionamiento cotidiano." }
-        ],
-
-        revision: "Priorizar the aspects that truly need continuity and turn them into concrete practices."
-      },
-
-      {
-        id: 4,
-        tarea: "Identificar qué señales indican que estoy volviendo a un patrón anterior",
-        modulo: "Módulo 5 • Recursos cambio e integración",
-        etapa: "Prevención",
-        temas: ["Autoconocimiento", "Patrones", "Prevención", "Señales"],
-        variaciones: ["Ansiedad", "Autoexigencia", "Evitación", "Ira", "Relaciones"],
-        enfoque: "Individual y pareja",
-        tipoTarea: "Prevención de recaídas",
-        frecuencia: "Una vez",
-        materiales: "Hoja o notas del celular",
-
-        consiste: "Reconocer señales tempranas que indiquen que una forma de responder previamente trabajada está comenzando a reaparecer.",
-
-        objetivo: "Detectar cambios tempranos y actuar antes de que el patrón vuelva a instalarse.",
-
-        indicaciones: [
-          "Think of a pattern worked on.",
-          "Una señal en mis pensamientos.",
-          "Una señal en mis emociones.",
-          "Una señal en mi conducta.",
-          "Una señal en mis relaciones.",
-          "Then define what resource you will use when one of these signals appears."
-        ],
-
-        variacionesDetalle: [
-          { nombre: "Ansiedad", texto: "detectar aumento de preocupación, comprobación o evitación." },
-          { nombre: "Evitación", texto: "identificar el regreso progresivo de conductas de escape." },
-          { nombre: "Ira", texto: "reconocer señales previas a reacciones intensas." },
-          { nombre: "Autoexigencia", texto: "detectar aumento de exigencia y crítica personal." },
-          { nombre: "Relaciones", texto: "reconocer dinámicas que anteriormente generaban conflicto." }
-        ],
-
-        revision: "Revisar si las señales identificadas son suficientemente tempranas y qué respuesta puede interrumpir el patrón."
-      },
-
-      {
-        id: 5,
-        tarea: "Practicar mantener una conducta aunque el resultado no sea inmediato",
-        modulo: "Módulo 5 • Recursos cambio e integración",
-        etapa: "Continuidad",
-        temas: ["Cambio", "Constancia", "Progreso", "Tolerancia"],
-        variaciones: ["Ansiedad", "Autocuidado", "Autoestima", "Hábitos", "Relaciones"],
-        enfoque: "Individual y pareja",
-        tipoTarea: "Consolidación de cambios",
-        frecuencia: "Una vez durante la semana",
-        materiales: "Ninguno",
-
-        consiste: "Mantener una conducta útil aunque sus resultados no aparezcan inmediatamente.",
-
-        objetivo: "Fortalecer la constancia y reducir la tendencia a abandonar cambios únicamente porque sus efectos no son inmediatos.",
-
-        indicaciones: [
-          "Elige una conducta que quieras mantener.",
-          "Durante la semana, practícala según lo acordado aunque no notes un cambio inmediato.",
-          "Al finalizar, observa:",
-          "¿Qué ocurrió al mantenerla?",
-          "¿Qué me hizo querer abandonarla?",
-          "¿Qué evidencia tengo de que vale la pena continuar?",
-          "¿Necesito ajustar algo?"
-        ],
-
-        variacionesDetalle: [
-          { nombre: "Hábitos", texto: "mantener una conducta aunque el resultado requiera tiempo." },
-          { nombre: "Ansiedad", texto: "continuar practicando una respuesta alternativa." },
-          { nombre: "Autoestima", texto: "sostener conductas de cuidado aunque el cambio emocional sea gradual." },
-          { nombre: "Relaciones", texto: "mantener formas de interacción saludables aunque no produzcan resultados inmediatos." },
-          { nombre: "Autocuidado", texto: "continuar una práctica sin exigir resultados instantáneos." }
-        ],
-
-        revision: "Explorar la relación entre expectativas de resultado inmediato y capacidad para mantener cambios."
-      }
-
-    ];
+</div>
 
 
-    const buscador = document.getElementById("buscador");
-    const tarjetas = document.getElementById("tarjetas");
-    const contador = document.getElementById("contador");
+<div
+  class="aviso-copiado"
+  id="avisoCopiado"
+  aria-live="polite"
+>
+  ✓ Tarea copiada
+</div>
 
-    const filtros = {
-      modulo: document.getElementById("filtroModulo"),
-      etapa: document.getElementById("filtroEtapa"),
-      tema: document.getElementById("filtroTema"),
-      variacion: document.getElementById("filtroVariacion"),
-      enfoque: document.getElementById("filtroEnfoque"),
-      tipo: document.getElementById("filtroTipo")
-    };
 
-    function valoresUnicos(campo) {
-      const valores = [];
+<script>
 
-      tareas.forEach(tarea => {
-        const valor = tarea[campo];
+  /* =========================
+     DATOS
+  ========================= */
 
-        if (Array.isArray(valor)) {
-          valor.forEach(item => valores.push(item));
-        } else {
-          valores.push(valor);
+  const tareas = [
+
+    {
+      id: 1,
+
+      tarea: "Construir mi plan personal para mantener los cambios",
+
+      modulo: "Módulo 5 • Recursos cambio e integración",
+
+      etapa: "Integración final",
+
+      temas: [
+        "Continuidad",
+        "Integración",
+        "Prevención",
+        "Recursos"
+      ],
+
+      variaciones: [
+        "Afrontamiento",
+        "Ansiedad",
+        "Autocuidado",
+        "Autoestima",
+        "Hábitos",
+        "Relaciones"
+      ],
+
+      enfoque: "Individual y pareja",
+
+      tipoTarea: "Plan de mantenimiento",
+
+      frecuencia: "Una vez",
+
+      materiales: "Hoja o notas del celular",
+
+      consiste:
+        "Construir un plan personal y breve que reúna los cambios que se quieren mantener, los recursos disponibles y las acciones que pueden realizarse ante futuras dificultades.",
+
+      objetivo:
+        "Integrar el trabajo realizado en un plan práctico que permita mantener los cambios y responder ante posibles dificultades futuras.",
+
+      indicaciones: [
+        "Los cambios que quiero mantener.",
+        "Las conductas que los sostienen.",
+        "Los recursos que quiero conservar.",
+        "Las señales que me indican que necesito prestar atención.",
+        "Lo que puedo hacer si aparece una dificultad.",
+        "Las personas o recursos externos a los que puedo recurrir.",
+        "Lo que quiero seguir construyendo.",
+        "Keep the plan brief and practical; it should be something the person can consult/use."
+      ],
+
+      variacionesDetalle: [
+        {
+          nombre: "Ansiedad",
+          texto: "incluir señales tempranas y estrategias de afrontamiento."
+        },
+        {
+          nombre: "Autoestima",
+          texto: "incluir conductas que favorezcan una relación más equilibrada contigo mismo/a."
+        },
+        {
+          nombre: "Relaciones",
+          texto: "incorporar recursos de comunicación, límites y reparación."
+        },
+        {
+          nombre: "Hábitos",
+          texto: "establecer las prácticas que quieres mantener."
+        },
+        {
+          nombre: "Autocuidado",
+          texto: "incluir necesidades y conductas que quieres continuar priorizando."
+        },
+        {
+          nombre: "Afrontamiento",
+          texto: "reunir las estrategias que puedes utilizar ante futuras dificultades."
         }
-      });
+      ],
 
-      return [...new Set(valores)].sort();
+      revision:
+        "Revisar el plan completo, priorizar los elementos esenciales y verificar que pueda utilizarse de manera autónoma y realista."
+    },
+
+
+    {
+      id: 2,
+
+      tarea: "Reconocer qué aprendí sobre la manera en que puedo afrontar las dificultades",
+
+      modulo: "Módulo 5 • Recursos cambio e integración",
+
+      etapa: "Reflexionar",
+
+      temas: [
+        "Afrontamiento",
+        "Aprendizaje",
+        "Autoconocimiento",
+        "Integración"
+      ],
+
+      variaciones: [
+        "Ansiedad",
+        "Autoestima",
+        "Cambios vitales",
+        "Estrés",
+        "Relaciones"
+      ],
+
+      enfoque: "Individual y pareja",
+
+      tipoTarea: "Integración de aprendizajes",
+
+      frecuencia: "Una vez",
+
+      materiales: "Hoja o notas del celular",
+
+      consiste:
+        "Reflexionar sobre los principales aprendizajes relacionados con la propia capacidad para afrontar dificultades.",
+
+      objetivo:
+        "Consolidar una comprensión más clara de los recursos personales desarrollados durante el proceso.",
+
+      indicaciones: [
+        "Antes pensaba que para afrontar una dificultad necesitaba…",
+        "Ahora sé que también puedo…",
+        "Un recurso que antes no utilizaba y ahora puedo utilizar es…",
+        "Cuando vuelva a aparecer una dificultad, quiero recordar…",
+        "Algo que todavía quiero seguir practicando es…",
+        "Write concrete answers based on real experiences."
+      ],
+
+      variacionesDetalle: [
+        {
+          nombre: "Ansiedad",
+          texto: "reconocer nuevas formas de responder al malestar."
+        },
+        {
+          nombre: "Estrés",
+          texto: "identificar aprendizajes sobre el manejo de demandas."
+        },
+        {
+          nombre: "Relaciones",
+          texto: "reconocer cambios en la manera de afrontar dificultades interpersonales."
+        },
+        {
+          nombre: "Autoestima",
+          texto: "identificar aprendizajes sobre la propia capacidad."
+        },
+        {
+          nombre: "Cambios vitales",
+          texto: "reconocer recursos desarrollados durante períodos de adaptación."
+        }
+      ],
+
+      revision:
+        "Integrar los aprendizajes principales y diferenciar aquello que ya se siente incorporado de lo que todavía requiere práctica."
+    },
+
+
+    {
+      id: 3,
+
+      tarea: "Elegir qué quiero seguir practicando después de terminar este proceso",
+
+      modulo: "Módulo 5 • Recursos cambio e integración",
+
+      etapa: "Continuidad",
+
+      temas: [
+        "Cambio",
+        "Continuidad",
+        "Objetivos",
+        "Práctica"
+      ],
+
+      variaciones: [
+        "Ansiedad",
+        "Autocuidado",
+        "Autoestima",
+        "Organización",
+        "Relaciones"
+      ],
+
+      enfoque: "Individual y pareja",
+
+      tipoTarea: "Plan de continuidad",
+
+      frecuencia: "Una vez",
+
+      materiales: "Hoja o notas del celular",
+
+      consiste:
+        "Elegir uno o dos aspectos que la persona quiera continuar practicando después de finalizar el proceso.",
+
+      objetivo:
+        "Transformar el cierre del proceso en una continuidad práctica de los aprendizajes.",
+
+      indicaciones: [
+        "Elige hasta dos aspectos que quieras seguir desarrollando.",
+        "¿Qué quiero seguir practicando?",
+        "¿Por qué es importante?",
+        "¿Qué conducta concreta puedo mantener?",
+        "¿Cómo sabré que estoy avanzando?",
+        "Avoid turning it into an extensive list of objectives."
+      ],
+
+      variacionesDetalle: [
+        {
+          nombre: "Ansiedad",
+          texto: "continuar practicando nuevas formas de afrontamiento."
+        },
+        {
+          nombre: "Autoestima",
+          texto: "mantener conductas de valoración y cuidado personal."
+        },
+        {
+          nombre: "Relaciones",
+          texto: "continuar fortaleciendo formas de comunicación."
+        },
+        {
+          nombre: "Autocuidado",
+          texto: "conservar prácticas importantes para el bienestar."
+        },
+        {
+          nombre: "Organización",
+          texto: "mantener estrategias que favorezcan el funcionamiento cotidiano."
+        }
+      ],
+
+      revision:
+        "Priorizar the aspects that truly need continuity and turn them into concrete practices."
+    },
+
+
+    {
+      id: 4,
+
+      tarea: "Identificar qué señales indican que estoy volviendo a un patrón anterior",
+
+      modulo: "Módulo 5 • Recursos cambio e integración",
+
+      etapa: "Prevención",
+
+      temas: [
+        "Autoconocimiento",
+        "Patrones",
+        "Prevención",
+        "Señales"
+      ],
+
+      variaciones: [
+        "Ansiedad",
+        "Autoexigencia",
+        "Evitación",
+        "Ira",
+        "Relaciones"
+      ],
+
+      enfoque: "Individual y pareja",
+
+      tipoTarea: "Prevención de recaídas",
+
+      frecuencia: "Una vez",
+
+      materiales: "Hoja o notas del celular",
+
+      consiste:
+        "Reconocer señales tempranas que indiquen que una forma de responder previamente trabajada está comenzando a reaparecer.",
+
+      objetivo:
+        "Detectar cambios tempranos y actuar antes de que el patrón vuelva a instalarse.",
+
+      indicaciones: [
+        "Think of a pattern worked on.",
+        "Una señal en mis pensamientos.",
+        "Una señal en mis emociones.",
+        "Una señal en mi conducta.",
+        "Una señal en mis relaciones.",
+        "Then define what resource you will use when one of these signals appears."
+      ],
+
+      variacionesDetalle: [
+        {
+          nombre: "Ansiedad",
+          texto: "detectar aumento de preocupación, comprobación o evitación."
+        },
+        {
+          nombre: "Evitación",
+          texto: "identificar el regreso progresivo de conductas de escape."
+        },
+        {
+          nombre: "Ira",
+          texto: "reconocer señales previas a reacciones intensas."
+        },
+        {
+          nombre: "Autoexigencia",
+          texto: "detectar aumento de exigencia y crítica personal."
+        },
+        {
+          nombre: "Relaciones",
+          texto: "reconocer dinámicas que anteriormente generaban conflicto."
+        }
+      ],
+
+      revision:
+        "Revisar si las señales identificadas son suficientemente tempranas y qué respuesta puede interrumpir el patrón."
+    },
+
+
+    {
+      id: 5,
+
+      tarea: "Practicar mantener una conducta aunque el resultado no sea inmediato",
+
+      modulo: "Módulo 5 • Recursos cambio e integración",
+
+      etapa: "Continuidad",
+
+      temas: [
+        "Cambio",
+        "Constancia",
+        "Progreso",
+        "Tolerancia"
+      ],
+
+      variaciones: [
+        "Ansiedad",
+        "Autocuidado",
+        "Autoestima",
+        "Hábitos",
+        "Relaciones"
+      ],
+
+      enfoque: "Individual y pareja",
+
+      tipoTarea: "Consolidación de cambios",
+
+      frecuencia: "Una vez durante la semana",
+
+      materiales: "Ninguno",
+
+      consiste:
+        "Mantener una conducta útil aunque sus resultados no aparezcan inmediatamente.",
+
+      objetivo:
+        "Fortalecer la constancia y reducir la tendencia a abandonar cambios únicamente porque sus efectos no son inmediatos.",
+
+      indicaciones: [
+        "Elige una conducta que quieras mantener.",
+        "Durante la semana, practícala según lo acordado aunque no notes un cambio inmediato.",
+        "Al finalizar, observa:",
+        "¿Qué ocurrió al mantenerla?",
+        "¿Qué me hizo querer abandonarla?",
+        "¿Qué evidencia tengo de que vale la pena continuar?",
+        "¿Necesito ajustar algo?"
+      ],
+
+      variacionesDetalle: [
+        {
+          nombre: "Hábitos",
+          texto: "mantener una conducta aunque el resultado requiera tiempo."
+        },
+        {
+          nombre: "Ansiedad",
+          texto: "continuar practicando una respuesta alternativa."
+        },
+        {
+          nombre: "Autoestima",
+          texto: "sostener conductas de cuidado aunque el cambio emocional sea gradual."
+        },
+        {
+          nombre: "Relaciones",
+          texto: "mantener formas de interacción saludables aunque no produzcan resultados inmediatos."
+        },
+        {
+          nombre: "Autocuidado",
+          texto: "continuar una práctica sin exigir resultados instantáneos."
+        }
+      ],
+
+      revision:
+        "Explorar la relación entre expectativas de resultado inmediato y capacidad para mantener cambios."
     }
 
-    function llenarFiltro(select, valores) {
-      valores.forEach(valor => {
-        const opcion = document.createElement("option");
-        opcion.value = valor;
-        opcion.textContent = valor;
-        select.appendChild(opcion);
-      });
-    }
-
-    llenarFiltro(filtros.modulo, valoresUnicos("modulo"));
-    llenarFiltro(filtros.etapa, valoresUnicos("etapa"));
-    llenarFiltro(filtros.tema, valoresUnicos("temas"));
-    llenarFiltro(filtros.variacion, valoresUnicos("variaciones"));
-    llenarFiltro(filtros.enfoque, valoresUnicos("enfoque"));
-    llenarFiltro(filtros.tipo, valoresUnicos("tipoTarea"));
+  ];
 
 
-    function contiene(valor, filtro) {
-      if (!filtro) return true;
+  /* =========================
+     FAVORITOS
+  ========================= */
+
+  let favoritos = JSON.parse(
+    localStorage.getItem("favoritosTareasTemple") || "[]"
+  );
+
+  let mostrarSoloFavoritos = false;
+  let tareaActual = null;
+
+
+  /* =========================
+     ELEMENTOS
+  ========================= */
+
+  const buscador = document.getElementById("buscador");
+  const tarjetas = document.getElementById("tarjetas");
+  const contador = document.getElementById("contador");
+
+  const filtroModulo = document.getElementById("filtroModulo");
+  const filtroEtapa = document.getElementById("filtroEtapa");
+  const filtroTema = document.getElementById("filtroTema");
+  const filtroVariacion = document.getElementById("filtroVariacion");
+  const filtroEnfoque = document.getElementById("filtroEnfoque");
+  const filtroTipo = document.getElementById("filtroTipo");
+
+  const botonFavoritos = document.getElementById("botonFavoritos");
+
+  const modalFondo = document.getElementById("modalFondo");
+  const modalFavorito = document.getElementById("modalFavorito");
+  const modalCopiar = document.getElementById("modalCopiar");
+
+
+  /* =========================
+     FILTROS
+  ========================= */
+
+  function obtenerValoresUnicos(campo) {
+
+    const valores = [];
+
+    tareas.forEach(tarea => {
+
+      const valor = tarea[campo];
 
       if (Array.isArray(valor)) {
-        return valor.includes(filtro);
+        valor.forEach(item => valores.push(item));
+      } else {
+        valores.push(valor);
       }
 
-      return valor === filtro;
+    });
+
+    return [...new Set(valores)].sort();
+  }
+
+
+  function llenarFiltro(select, valores) {
+
+    valores.forEach(valor => {
+
+      const opcion = document.createElement("option");
+
+      opcion.value = valor;
+      opcion.textContent = valor;
+
+      select.appendChild(opcion);
+
+    });
+
+  }
+
+
+  llenarFiltro(filtroModulo, obtenerValoresUnicos("modulo"));
+  llenarFiltro(filtroEtapa, obtenerValoresUnicos("etapa"));
+  llenarFiltro(filtroTema, obtenerValoresUnicos("temas"));
+  llenarFiltro(filtroVariacion, obtenerValoresUnicos("variaciones"));
+  llenarFiltro(filtroEnfoque, obtenerValoresUnicos("enfoque"));
+  llenarFiltro(filtroTipo, obtenerValoresUnicos("tipoTarea"));
+
+
+  function coincideFiltro(valor, filtro) {
+
+    if (!filtro) return true;
+
+    if (Array.isArray(valor)) {
+      return valor.includes(filtro);
+    }
+
+    return valor === filtro;
+
+  }
+
+
+  /* =========================
+     MOSTRAR TAREAS
+  ========================= */
+
+  function mostrarTareas() {
+
+    const texto = buscador.value.toLowerCase().trim();
+
+    const resultados = tareas.filter(tarea => {
+
+      const textoCompleto = [
+
+        tarea.tarea,
+        tarea.modulo,
+        tarea.etapa,
+        tarea.temas.join(" "),
+        tarea.variaciones.join(" "),
+        tarea.enfoque,
+        tarea.tipoTarea,
+        tarea.frecuencia
+
+      ].join(" ").toLowerCase();
+
+
+      const coincideBusqueda =
+        !texto || textoCompleto.includes(texto);
+
+
+      const coincideFavorito =
+        !mostrarSoloFavoritos ||
+        favoritos.includes(tarea.id);
+
+
+      return (
+
+        coincideBusqueda &&
+
+        coincideFavorito &&
+
+        coincideFiltro(tarea.modulo, filtroModulo.value) &&
+
+        coincideFiltro(tarea.etapa, filtroEtapa.value) &&
+
+        coincideFiltro(tarea.temas, filtroTema.value) &&
+
+        coincideFiltro(tarea.variaciones, filtroVariacion.value) &&
+
+        coincideFiltro(tarea.enfoque, filtroEnfoque.value) &&
+
+        coincideFiltro(tarea.tipoTarea, filtroTipo.value)
+
+      );
+
+    });
+
+
+    contador.textContent =
+      `${resultados.length} ${
+        resultados.length === 1 ? "tarea" : "tareas"
+      }`;
+
+
+    tarjetas.innerHTML = "";
+
+
+    if (resultados.length === 0) {
+
+      tarjetas.innerHTML = `
+        <div class="vacio">
+          No encontramos tareas con esos criterios.
+        </div>
+      `;
+
+      return;
     }
 
 
-    function mostrarTareas() {
+    resultados.forEach(tarea => {
 
-      const texto = buscador.value.toLowerCase().trim();
+      const esFavorita = favoritos.includes(tarea.id);
 
-      const resultados = tareas.filter(tarea => {
+      const tarjeta = document.createElement("article");
 
-        const coincideTexto =
-          !texto ||
-          tarea.tarea.toLowerCase().includes(texto) ||
-          tarea.modulo.toLowerCase().includes(texto) ||
-          tarea.temas.join(" ").toLowerCase().includes(texto) ||
-          tarea.variaciones.join(" ").toLowerCase().includes(texto);
+      tarjeta.className = "tarjeta";
 
-        return (
-          coincideTexto &&
-          contiene(tarea.modulo, filtros.modulo.value) &&
-          contiene(tarea.etapa, filtros.etapa.value) &&
-          contiene(tarea.temas, filtros.tema.value) &&
-          contiene(tarea.variaciones, filtros.variacion.value) &&
-          contiene(tarea.enfoque, filtros.enfoque.value) &&
-          contiene(tarea.tipoTarea, filtros.tipo.value)
-        );
-      });
 
-      contador.textContent =
-        `${resultados.length} ${resultados.length === 1 ? "tarea" : "tareas"}`;
+      tarjeta.innerHTML = `
 
-      tarjetas.innerHTML = "";
+        <div class="tarjeta-cabecera">
 
-      if (resultados.length === 0) {
-        tarjetas.innerHTML = `
-          <div class="vacio">
-            No encontramos tareas con esos criterios.
-          </div>
-        `;
-        return;
-      }
-
-      resultados.forEach(tarea => {
-
-        const tarjeta = document.createElement("article");
-        tarjeta.className = "tarjeta";
-
-        tarjeta.innerHTML = `
-          <div class="tarjeta-etapa">${tarea.etapa}</div>
-
-          <h2>${tarea.tarea}</h2>
-
-          <div class="metadatos">
-            <span class="etiqueta-chip">${tarea.tipoTarea}</span>
-            <span class="etiqueta-chip">${tarea.enfoque}</span>
+          <div class="etapa">
+            ${tarea.etapa}
           </div>
 
-          <div class="metadatos">
-            ${tarea.temas.map(tema =>
-              `<span class="etiqueta-chip">${tema}</span>`
-            ).join("")}
-          </div>
-
-          <button class="boton" type="button">
-            Ver tarea →
+          <button
+            type="button"
+            class="boton-favorito ${
+              esFavorita ? "activo" : ""
+            }"
+            aria-label="${
+              esFavorita
+                ? "Quitar de favoritos"
+                : "Agregar a favoritos"
+            }"
+          >
+            ${esFavorita ? "★" : "☆"}
           </button>
-        `;
 
-        tarjeta.querySelector(".boton").addEventListener("click", () => {
-          abrirTarea(tarea);
+        </div>
+
+
+        <h2>
+          ${tarea.tarea}
+        </h2>
+
+
+        <div class="datos-tarjeta">
+
+          <span class="chip">
+            ${tarea.tipoTarea}
+          </span>
+
+          <span class="chip">
+            ${tarea.enfoque}
+          </span>
+
+        </div>
+
+
+        <div class="temas">
+          ${tarea.temas.join(" · ")}
+        </div>
+
+
+        <button
+          type="button"
+          class="boton-ver"
+        >
+          Ver tarea →
+        </button>
+
+      `;
+
+
+      tarjeta
+        .querySelector(".boton-favorito")
+        .addEventListener("click", evento => {
+
+          evento.stopPropagation();
+
+          alternarFavorito(tarea.id);
+
         });
 
-        tarjetas.appendChild(tarjeta);
-      });
-    }
+
+      tarjeta
+        .querySelector(".boton-ver")
+        .addEventListener("click", () => {
+
+          abrirTarea(tarea);
+
+        });
 
 
-    function abrirTarea(tarea) {
+      tarjetas.appendChild(tarjeta);
 
-      document.getElementById("modalTitulo").textContent = tarea.tarea;
-
-      document.getElementById("modalDatos").innerHTML = `
-        <div class="dato">
-          <strong>MÓDULO</strong>
-          <span>${tarea.modulo}</span>
-        </div>
-
-        <div class="dato">
-          <strong>ETAPA</strong>
-          <span>${tarea.etapa}</span>
-        </div>
-
-        <div class="dato">
-          <strong>TIPO DE TAREA</strong>
-          <span>${tarea.tipoTarea}</span>
-        </div>
-
-        <div class="dato">
-          <strong>ENFOQUE</strong>
-          <span>${tarea.enfoque}</span>
-        </div>
-
-        <div class="dato">
-          <strong>FRECUENCIA</strong>
-          <span>${tarea.frecuencia}</span>
-        </div>
-
-        <div class="dato">
-          <strong>MATERIALES</strong>
-          <span>${tarea.materiales}</span>
-        </div>
-      `;
-
-      document.getElementById("modalConsiste").textContent = tarea.consiste;
-      document.getElementById("modalObjetivo").textContent = tarea.objetivo;
-
-      document.getElementById("modalIndicaciones").innerHTML = `
-        <ul>
-          ${tarea.indicaciones.map(item => `<li>${item}</li>`).join("")}
-        </ul>
-      `;
-
-      document.getElementById("modalVariaciones").innerHTML =
-        tarea.variacionesDetalle.map(variacion => `
-          <div class="variacion">
-            <strong>${variacion.nombre}</strong>
-            <span>${variacion.texto}</span>
-          </div>
-        `).join("");
-
-      document.getElementById("modalRevision").textContent = tarea.revision;
-
-      document.getElementById("modalFondo").style.display = "block";
-      document.body.style.overflow = "hidden";
-    }
-
-
-    function cerrarModal() {
-      document.getElementById("modalFondo").style.display = "none";
-      document.body.style.overflow = "";
-    }
-
-    document.getElementById("cerrarModal").addEventListener("click", cerrarModal);
-
-    document.getElementById("modalFondo").addEventListener("click", evento => {
-      if (evento.target.id === "modalFondo") {
-        cerrarModal();
-      }
     });
 
+  }
 
-    buscador.addEventListener("input", mostrarTareas);
 
-    Object.values(filtros).forEach(filtro => {
-      filtro.addEventListener("change", mostrarTareas);
-    });
+  /* =========================
+     FAVORITOS
+  ========================= */
+
+  function alternarFavorito(id) {
+
+    if (favoritos.includes(id)) {
+
+      favoritos = favoritos.filter(
+        favoritoId => favoritoId !== id
+      );
+
+    } else {
+
+      favoritos.push(id);
+
+    }
+
+
+    localStorage.setItem(
+      "favoritosTareasTemple",
+      JSON.stringify(favoritos)
+    );
+
 
     mostrarTareas();
 
-  </script>
+
+    if (tareaActual && tareaActual.id === id) {
+
+      actualizarBotonFavoritoModal();
+
+    }
+
+  }
+
+
+  function actualizarBotonFavoritoModal() {
+
+    const esFavorita =
+      favoritos.includes(tareaActual.id);
+
+
+    modalFavorito.textContent =
+      esFavorita
+        ? "★ Quitar de favoritos"
+        : "☆ Agregar a favoritos";
+
+
+    modalFavorito.classList.toggle(
+      "favorito-activo",
+      esFavorita
+    );
+
+  }
+
+
+  botonFavoritos.addEventListener(
+    "click",
+    () => {
+
+      mostrarSoloFavoritos =
+        !mostrarSoloFavoritos;
+
+
+      botonFavoritos.classList.toggle(
+        "activo",
+        mostrarSoloFavoritos
+      );
+
+
+      mostrarTareas();
+
+    }
+  );
+
+
+  /* =========================
+     ABRIR TAREA
+  ========================= */
+
+  function abrirTarea(tarea) {
+
+    tareaActual = tarea;
+
+
+    document.getElementById("modalEtapa").textContent =
+      tarea.etapa;
+
+
+    document.getElementById("modalTitulo").textContent =
+      tarea.tarea;
+
+
+    document.getElementById("modalDatos").innerHTML = `
+
+      <div class="dato">
+        <strong>MÓDULO</strong>
+        <span>${tarea.modulo}</span>
+      </div>
+
+      <div class="dato">
+        <strong>ETAPA</strong>
+        <span>${tarea.etapa}</span>
+      </div>
+
+      <div class="dato">
+        <strong>TIPO DE TAREA</strong>
+        <span>${tarea.tipoTarea}</span>
+      </div>
+
+      <div class="dato">
+        <strong>ENFOQUE</strong>
+        <span>${tarea.enfoque}</span>
+      </div>
+
+      <div class="dato">
+        <strong>FRECUENCIA</strong>
+        <span>${tarea.frecuencia}</span>
+      </div>
+
+      <div class="dato">
+        <strong>MATERIALES</strong>
+        <span>${tarea.materiales}</span>
+      </div>
+
+    `;
+
+
+    document.getElementById("modalConsiste").textContent =
+      tarea.consiste;
+
+
+    document.getElementById("modalObjetivo").textContent =
+      tarea.objetivo;
+
+
+    document.getElementById("modalIndicaciones").innerHTML = `
+
+      <ul>
+
+        ${tarea.indicaciones
+          .map(item => `<li>${item}</li>`)
+          .join("")}
+
+      </ul>
+
+    `;
+
+
+    document.getElementById("modalVariaciones").innerHTML =
+
+      tarea.variacionesDetalle
+        .map(variacion => `
+
+          <div class="variacion">
+
+            <strong>
+              ${variacion.nombre}
+            </strong>
+
+            <span>
+              ${variacion.texto}
+            </span>
+
+          </div>
+
+        `)
+        .join("");
+
+
+    document.getElementById("modalRevision").textContent =
+      tarea.revision;
+
+
+    actualizarBotonFavoritoModal();
+
+
+    modalFondo.classList.add("visible");
+
+    document.body.style.overflow = "hidden";
+
+  }
+
+
+  /* =========================
+     CERRAR MODAL
+  ========================= */
+
+  function cerrarModal() {
+
+    modalFondo.classList.remove("visible");
+
+    document.body.style.overflow = "";
+
+    tareaActual = null;
+
+  }
+
+
+  document
+    .getElementById("cerrarModal")
+    .addEventListener(
+      "click",
+      cerrarModal
+    );
+
+
+  modalFondo.addEventListener(
+    "click",
+    evento => {
+
+      if (
+        evento.target === modalFondo
+      ) {
+
+        cerrarModal();
+
+      }
+
+    }
+  );
+
+
+  document.addEventListener(
+    "keydown",
+    evento => {
+
+      if (
+        evento.key === "Escape" &&
+        modalFondo.classList.contains("visible")
+      ) {
+
+        cerrarModal();
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     FAVORITO DESDE MODAL
+  ========================= */
+
+  modalFavorito.addEventListener(
+    "click",
+    () => {
+
+      if (tareaActual) {
+
+        alternarFavorito(
+          tareaActual.id
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =========================
+     COPIAR TAREA
+  ========================= */
+
+  function generarTextoParaCopiar(tarea) {
+
+    let texto = "";
+
+    texto += `${tarea.tarea}\n\n`;
+
+    texto += `MÓDULO\n${tarea.modulo}\n\n`;
+
+    texto += `ETAPA\n${tarea.etapa}\n\n`;
+
+    texto += `TEMAS\n${tarea.temas.join(" · ")}\n\n`;
+
+    texto += `VARIACIONES\n${tarea.variaciones.join(" · ")}\n\n`;
+
+    texto += `ENFOQUE\n${tarea.enfoque}\n\n`;
+
+    texto += `TIPO DE TAREA\n${tarea.tipoTarea}\n\n`;
+
+    texto += `FRECUENCIA\n${tarea.frecuencia}\n\n`;
+
+    texto += `MATERIALES\n${tarea.materiales}\n\n`;
+
+    texto += `¿EN QUÉ CONSISTE?\n${tarea.consiste}\n\n`;
+
+    texto += `OBJETIVO\n${tarea.objetivo}\n\n`;
+
+    texto += `INDICACIONES\n`;
+
+    tarea.indicaciones.forEach(
+      indicacion => {
+
+        texto += `• ${indicacion}\n`;
+
+      }
+    );
+
+
+    texto += `\nVARIACIONES\n`;
+
+    tarea.variacionesDetalle.forEach(
+      variacion => {
+
+        texto +=
+          `• ${variacion.nombre}: ${variacion.texto}\n`;
+
+      }
+    );
+
+
+    texto +=
+      `\nPARA REVISAR EN SESIÓN\n${tarea.revision}`;
+
+
+    return texto;
+
+  }
+
+
+  async function copiarTarea() {
+
+    if (!tareaActual) return;
+
+
+    const texto =
+      generarTextoParaCopiar(tareaActual);
+
+
+    try {
+
+      await navigator.clipboard.writeText(
+        texto
+      );
+
+      mostrarAvisoCopiado();
+
+    } catch {
+
+      const area =
+        document.createElement("textarea");
+
+      area.value = texto;
+
+      document.body.appendChild(area);
+
+      area.select();
+
+      document.execCommand("copy");
+
+      area.remove();
+
+      mostrarAvisoCopiado();
+
+    }
+
+  }
+
+
+  modalCopiar.addEventListener(
+    "click",
+    copiarTarea
+  );
+
+
+  function mostrarAvisoCopiado() {
+
+    const aviso =
+      document.getElementById("avisoCopiado");
+
+
+    aviso.classList.add("visible");
+
+
+    setTimeout(() => {
+
+      aviso.classList.remove(
+        "visible"
+      );
+
+    }, 1800);
+
+  }
+
+
+  /* =========================
+     EVENTOS
+  ========================= */
+
+  buscador.addEventListener(
+    "input",
+    mostrarTareas
+  );
+
+
+  [
+    filtroModulo,
+    filtroEtapa,
+    filtroTema,
+    filtroVariacion,
+    filtroEnfoque,
+    filtroTipo
+  ].forEach(filtro => {
+
+    filtro.addEventListener(
+      "change",
+      mostrarTareas
+    );
+
+  });
+
+
+  /* =========================
+     INICIAR
+  ========================= */
+
+  mostrarTareas();
+
+</script>
 
 </body>
 </html>
