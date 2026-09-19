@@ -1124,415 +1124,407 @@
      DATOS
   ===================================== */
 
-  const tareas = [
-
-    {
-      id: 1,
-      tarea: "Construir mi plan personal para mantener los cambios",
-      modulo: "Módulo 5 • Recursos cambio e integración",
-      etapa: "Integración final",
-      temas: [
-        "Continuidad",
-        "Integración",
-        "Prevención",
-        "Recursos"
-      ],
-      variaciones: [
-        "Afrontamiento",
-        "Ansiedad",
-        "Autocuidado",
-        "Autoestima",
-        "Hábitos",
-        "Relaciones"
-      ],
-      enfoque: "Individual y pareja",
-      tipoTarea: "Plan de mantenimiento",
-      frecuencia: "Una vez",
-      materiales: "Hoja o notas del celular",
-
-      consiste:
-        "Construir un plan personal y breve que reúna los cambios que se quieren mantener, los recursos disponibles y las acciones que pueden realizarse ante futuras dificultades.",
-
-      objetivo:
-        "Integrar el trabajo realizado en un plan práctico que permita mantener los cambios y responder ante posibles dificultades futuras.",
-
-      indicaciones: [
-        "Los cambios que quiero mantener.",
-        "Las conductas que los sostienen.",
-        "Los recursos que quiero conservar.",
-        "Las señales que me indican que necesito prestar atención.",
-        "Lo que puedo hacer si aparece una dificultad.",
-        "Las personas o recursos externos a los que puedo recurrir.",
-        "Lo que quiero seguir construyendo.",
-        "Mantén el plan breve y práctico; debería ser algo que la persona pueda consultar y utilizar."
-      ],
-
-      variacionesDetalle: [
-        {
-          nombre: "Ansiedad",
-          texto: "incluir señales tempranas y estrategias de afrontamiento."
-        },
-        {
-          nombre: "Autoestima",
-          texto: "incluir conductas que favorezcan una relación más equilibrada contigo mismo/a."
-        },
-        {
-          nombre: "Relaciones",
-          texto: "incorporar recursos de comunicación, límites y reparación."
-        },
-        {
-          nombre: "Hábitos",
-          texto: "establecer las prácticas que quieres mantener."
-        },
-        {
-          nombre: "Autocuidado",
-          texto: "incluir necesidades y conductas que quieres continuar priorizando."
-        },
-        {
-          nombre: "Afrontamiento",
-          texto: "reunir las estrategias que puedes utilizar ante futuras dificultades."
-        }
-      ],
-
-      revision:
-        "Revisar el plan completo, priorizar los elementos esenciales y verificar que pueda utilizarse de manera autónoma y realista."
-    },
-
-
-    {
-      id: 2,
-      tarea: "Reconocer qué aprendí sobre la manera en que puedo afrontar las dificultades",
-      modulo: "Módulo 5 • Recursos cambio e integración",
-      etapa: "Reflexionar",
-      temas: [
-        "Afrontamiento",
-        "Aprendizaje",
-        "Autoconocimiento",
-        "Integración"
-      ],
-      variaciones: [
-        "Ansiedad",
-        "Autoestima",
-        "Cambios vitales",
-        "Estrés",
-        "Relaciones"
-      ],
-      enfoque: "Individual y pareja",
-      tipoTarea: "Integración de aprendizajes",
-      frecuencia: "Una vez",
-      materiales: "Hoja o notas del celular",
-
-      consiste:
-        "Reflexionar sobre los principales aprendizajes relacionados con la propia capacidad para afrontar dificultades.",
-
-      objetivo:
-        "Consolidar una comprensión más clara de los recursos personales desarrollados durante el proceso.",
-
-      indicaciones: [
-        "Antes pensaba que para afrontar una dificultad necesitaba…",
-        "Ahora sé que también puedo…",
-        "Un recurso que antes no utilizaba y ahora puedo utilizar es…",
-        "Cuando vuelva a aparecer una dificultad, quiero recordar…",
-        "Algo que todavía quiero seguir practicando es…",
-        "Escribe respuestas concretas basadas en experiencias reales."
-      ],
-
-      variacionesDetalle: [
-        {
-          nombre: "Ansiedad",
-          texto: "reconocer nuevas formas de responder al malestar."
-        },
-        {
-          nombre: "Estrés",
-          texto: "identificar aprendizajes sobre el manejo de demandas."
-        },
-        {
-          nombre: "Relaciones",
-          texto: "reconocer cambios en la manera de afrontar dificultades interpersonales."
-        },
-        {
-          nombre: "Autoestima",
-          texto: "identificar aprendizajes sobre la propia capacidad."
-        },
-        {
-          nombre: "Cambios vitales",
-          texto: "reconocer recursos desarrollados durante períodos de adaptación."
-        }
-      ],
-
-      revision:
-        "Integrar los aprendizajes principales y diferenciar aquello que ya se siente incorporado de lo que todavía requiere práctica."
-    },
-
-
-    {
-      id: 3,
-      tarea: "Elegir qué quiero seguir practicando después de terminar este proceso",
-      modulo: "Módulo 5 • Recursos cambio e integración",
-      etapa: "Continuidad",
-      temas: [
-        "Cambio",
-        "Continuidad",
-        "Objetivos",
-        "Práctica"
-      ],
-      variaciones: [
-        "Ansiedad",
-        "Autocuidado",
-        "Autoestima",
-        "Organización",
-        "Relaciones"
-      ],
-      enfoque: "Individual y pareja",
-      tipoTarea: "Plan de continuidad",
-      frecuencia: "Una vez",
-      materiales: "Hoja o notas del celular",
-
-      consiste:
-        "Elegir uno o dos aspectos que la persona quiera continuar practicando después de finalizar el proceso.",
-
-      objetivo:
-        "Transformar el cierre del proceso en una continuidad práctica de los aprendizajes.",
-
-      indicaciones: [
-        "Elige hasta dos aspectos que quieras seguir desarrollando.",
-        "¿Qué quiero seguir practicando?",
-        "¿Por qué es importante?",
-        "¿Qué conducta concreta puedo mantener?",
-        "¿Cómo sabré que estoy avanzando?",
-        "Evita convertirlo en una lista extensa de objetivos."
-      ],
-
-      variacionesDetalle: [
-        {
-          nombre: "Ansiedad",
-          texto: "continuar practicando nuevas formas de afrontamiento."
-        },
-        {
-          nombre: "Autoestima",
-          texto: "mantener conductas de valoración y cuidado personal."
-        },
-        {
-          nombre: "Relaciones",
-          texto: "continuar fortaleciendo formas de comunicación."
-        },
-        {
-          nombre: "Autocuidado",
-          texto: "conservar prácticas importantes para el bienestar."
-        },
-        {
-          nombre: "Organización",
-          texto: "mantener estrategias que favorezcan el funcionamiento cotidiano."
-        }
-      ],
-
-      revision:
-        "Priorizar los aspectos que realmente necesitan continuidad y convertirlos en prácticas concretas."
-    },
-
-
-    {
-      id: 4,
-      tarea: "Identificar qué señales indican que estoy volviendo a un patrón anterior",
-      modulo: "Módulo 5 • Recursos cambio e integración",
-      etapa: "Prevención",
-      temas: [
-        "Autoconocimiento",
-        "Patrones",
-        "Prevención",
-        "Señales"
-      ],
-      variaciones: [
-        "Ansiedad",
-        "Autoexigencia",
-        "Evitación",
-        "Ira",
-        "Relaciones"
-      ],
-      enfoque: "Individual y pareja",
-      tipoTarea: "Prevención de recaídas",
-      frecuencia: "Una vez",
-      materiales: "Hoja o notas del celular",
-
-      consiste:
-        "Reconocer señales tempranas que indiquen que una forma de responder previamente trabajada está comenzando a reaparecer.",
-
-      objetivo:
-        "Detectar cambios tempranos y actuar antes de que el patrón vuelva a instalarse.",
-
-      indicaciones: [
-        "Piensa en un patrón trabajado.",
-        "Una señal en mis pensamientos.",
-        "Una señal en mis emociones.",
-        "Una señal en mi conducta.",
-        "Una señal en mis relaciones.",
-        "Luego define qué recurso utilizarás cuando aparezca una de estas señales."
-      ],
-
-      variacionesDetalle: [
-        {
-          nombre: "Ansiedad",
-          texto: "detectar aumento de preocupación, comprobación o evitación."
-        },
-        {
-          nombre: "Evitación",
-          texto: "identificar el regreso progresivo de conductas de escape."
-        },
-        {
-          nombre: "Ira",
-          texto: "reconocer señales previas a reacciones intensas."
-        },
-        {
-          nombre: "Autoexigencia",
-          texto: "detectar aumento de exigencia y crítica personal."
-        },
-        {
-          nombre: "Relaciones",
-          texto: "reconocer dinámicas que anteriormente generaban conflicto."
-        }
-      ],
-
-      revision:
-        "Revisar si las señales identificadas son suficientemente tempranas y qué respuesta puede interrumpir el patrón."
-    },
-
-
-    {
-      id: 5,
-      tarea: "Practicar mantener una conducta aunque el resultado no sea inmediato",
-      modulo: "Módulo 5 • Recursos cambio e integración",
-      etapa: "Continuidad",
-      temas: [
-        "Cambio",
-        "Constancia",
-        "Progreso",
-        "Tolerancia"
-      ],
-      variaciones: [
-        "Ansiedad",
-        "Autocuidado",
-        "Autoestima",
-        "Hábitos",
-        "Relaciones"
-      ],
-      enfoque: "Individual y pareja",
-      tipoTarea: "Consolidación de cambios",
-      frecuencia: "Una vez durante la semana",
-      materiales: "Ninguno",
-
-      consiste:
-        "Mantener una conducta útil aunque sus resultados no aparezcan inmediatamente.",
-
-      objetivo:
-        "Fortalecer la constancia y reducir la tendencia a abandonar cambios únicamente porque sus efectos no son inmediatos.",
-
-      indicaciones: [
-        "Elige una conducta que quieras mantener.",
-        "Durante la semana, practícala según lo acordado aunque no notes un cambio inmediato.",
-        "Al finalizar, observa:",
-        "¿Qué ocurrió al mantenerla?",
-        "¿Qué me hizo querer abandonarla?",
-        "¿Qué evidencia tengo de que vale la pena continuar?",
-        "¿Necesito ajustar algo?"
-      ],
-
-      variacionesDetalle: [
-        {
-          nombre: "Hábitos",
-          texto: "mantener una conducta aunque el resultado requiera tiempo."
-        },
-        {
-          nombre: "Ansiedad",
-          texto: "continuar practicando una respuesta alternativa."
-        },
-        {
-          nombre: "Autoestima",
-          texto: "sostener conductas de cuidado aunque el cambio emocional sea gradual."
-        },
-        {
-          nombre: "Relaciones",
-          texto: "mantener formas de interacción saludables aunque no produzcan resultados inmediatos."
-        },
-        {
-          nombre: "Autocuidado",
-          texto: "continuar una práctica sin exigir resultados instantáneos."
-        }
-      ],
-
-      revision:
-        "Explorar la relación entre expectativas de resultado inmediato y capacidad para mantener cambios."
-    }
-
-  ];
+ const tareas = [
 
   {
-  id: 5,
-  tarea: "Practicar mantener una conducta aunque el resultado no sea inmediato",
-  modulo: "Módulo 5 • Recursos cambio e integración",
-  etapa: "Continuidad",
-  temas: [
-    "Cambio",
-    "Constancia",
-    "Progreso",
-    "Tolerancia"
-  ],
-  variaciones: [
-    "Ansiedad",
-    "Autocuidado",
-    "Autoestima",
-    "Hábitos",
-    "Relaciones"
-  ],
-  enfoque: "Individual y pareja",
-  tipoTarea: "Consolidación de cambios",
-  frecuencia: "Una vez durante la semana",
-  materiales: "Ninguno",
+    id: 1,
+    tarea: "Construir mi plan personal para mantener los cambios",
+    modulo: "Módulo 5 • Recursos cambio e integración",
+    etapa: "Integración final",
+    temas: [
+      "Continuidad",
+      "Integración",
+      "Prevención",
+      "Recursos"
+    ],
+    variaciones: [
+      "Afrontamiento",
+      "Ansiedad",
+      "Autocuidado",
+      "Autoestima",
+      "Hábitos",
+      "Relaciones"
+    ],
+    enfoque: "Individual y pareja",
+    tipoTarea: "Plan de mantenimiento",
+    frecuencia: "Una vez",
+    materiales: "Hoja o notas del celular",
 
-  consiste:
-    "Mantener una conducta útil aunque sus resultados no aparezcan inmediatamente.",
+    consiste:
+      "Construir un plan personal y breve que reúna los cambios que se quieren mantener, los recursos disponibles y las acciones que pueden realizarse ante futuras dificultades.",
 
-  objetivo:
-    "Fortalecer la constancia y reducir la tendencia a abandonar cambios únicamente porque sus efectos no son inmediatos.",
+    objetivo:
+      "Integrar el trabajo realizado en un plan práctico que permita mantener los cambios y responder ante posibles dificultades futuras.",
 
-  indicaciones: [
-    "Elige una conducta que quieras mantener.",
-    "Durante la semana, practícala según lo acordado aunque no notes un cambio inmediato.",
-    "Al finalizar, observa:",
-    "¿Qué ocurrió al mantenerla?",
-    "¿Qué me hizo querer abandonarla?",
-    "¿Qué evidencia tengo de que vale la pena continuar?",
-    "¿Necesito ajustar algo?"
-  ],
+    indicaciones: [
+      "Los cambios que quiero mantener.",
+      "Las conductas que los sostienen.",
+      "Los recursos que quiero conservar.",
+      "Las señales que me indican que necesito prestar atención.",
+      "Lo que puedo hacer si aparece una dificultad.",
+      "Las personas o recursos externos a los que puedo recurrir.",
+      "Lo que quiero seguir construyendo.",
+      "Mantén el plan breve y práctico; debería ser algo que la persona pueda consultar y utilizar."
+    ],
 
-  variacionesDetalle: [
-    {
-      nombre: "Hábitos",
-      texto: "mantener una conducta aunque el resultado requiera tiempo."
-    },
-    {
-      nombre: "Ansiedad",
-      texto: "continuar practicando una respuesta alternativa."
-    },
-    {
-      nombre: "Autoestima",
-      texto: "sostener conductas de cuidado aunque el cambio emocional sea gradual."
-    },
-    {
-      nombre: "Relaciones",
-      texto: "mantener formas de interacción saludables aunque no produzcan resultados inmediatos."
-    },
-    {
-      nombre: "Autocuidado",
-      texto: "continuar una práctica sin exigir resultados instantáneos."
-    }
-  ],
+    variacionesDetalle: [
+      {
+        nombre: "Ansiedad",
+        texto: "incluir señales tempranas y estrategias de afrontamiento."
+      },
+      {
+        nombre: "Autoestima",
+        texto: "incluir conductas que favorezcan una relación más equilibrada contigo mismo/a."
+      },
+      {
+        nombre: "Relaciones",
+        texto: "incorporar recursos de comunicación, límites y reparación."
+      },
+      {
+        nombre: "Hábitos",
+        texto: "establecer las prácticas que quieres mantener."
+      },
+      {
+        nombre: "Autocuidado",
+        texto: "incluir necesidades y conductas que quieres continuar priorizando."
+      },
+      {
+        nombre: "Afrontamiento",
+        texto: "reunir las estrategias que puedes utilizar ante futuras dificultades."
+      }
+    ],
 
-  revisar:
-    "Explorar la relación entre expectativas de resultado inmediato y capacidad para mantener cambios."
-}
- ];
+    revision:
+      "Revisar el plan completo, priorizar los elementos esenciales y verificar que pueda utilizarse de manera autónoma y realista."
+  },
 
+  {
+    id: 2,
+    tarea: "Reconocer qué aprendí sobre la manera en que puedo afrontar las dificultades",
+    modulo: "Módulo 5 • Recursos cambio e integración",
+    etapa: "Reflexionar",
+    temas: [
+      "Afrontamiento",
+      "Aprendizaje",
+      "Autoconocimiento",
+      "Integración"
+    ],
+    variaciones: [
+      "Ansiedad",
+      "Autoestima",
+      "Cambios vitales",
+      "Estrés",
+      "Relaciones"
+    ],
+    enfoque: "Individual y pareja",
+    tipoTarea: "Integración de aprendizajes",
+    frecuencia: "Una vez",
+    materiales: "Hoja o notas del celular",
 
+    consiste:
+      "Reflexionar sobre los principales aprendizajes relacionados con la propia capacidad para afrontar dificultades.",
+
+    objetivo:
+      "Consolidar una comprensión más clara de los recursos personales desarrollados durante el proceso.",
+
+    indicaciones: [
+      "Antes pensaba que para afrontar una dificultad necesitaba…",
+      "Ahora sé que también puedo…",
+      "Un recurso que antes no utilizaba y ahora puedo utilizar es…",
+      "Cuando vuelva a aparecer una dificultad, quiero recordar…",
+      "Algo que todavía quiero seguir practicando es…",
+      "Escribe respuestas concretas basadas en experiencias reales."
+    ],
+
+    variacionesDetalle: [
+      {
+        nombre: "Ansiedad",
+        texto: "reconocer nuevas formas de responder al malestar."
+      },
+      {
+        nombre: "Estrés",
+        texto: "identificar aprendizajes sobre el manejo de demandas."
+      },
+      {
+        nombre: "Relaciones",
+        texto: "reconocer cambios en la manera de afrontar dificultades interpersonales."
+      },
+      {
+        nombre: "Autoestima",
+        texto: "identificar aprendizajes sobre la propia capacidad."
+      },
+      {
+        nombre: "Cambios vitales",
+        texto: "reconocer recursos desarrollados durante períodos de adaptación."
+      }
+    ],
+
+    revision:
+      "Integrar los aprendizajes principales y diferenciar aquello que ya se siente incorporado de lo que todavía requiere práctica."
+  },
+
+  {
+    id: 3,
+    tarea: "Elegir qué quiero seguir practicando después de terminar este proceso",
+    modulo: "Módulo 5 • Recursos cambio e integración",
+    etapa: "Continuidad",
+    temas: [
+      "Cambio",
+      "Continuidad",
+      "Objetivos",
+      "Práctica"
+    ],
+    variaciones: [
+      "Ansiedad",
+      "Autocuidado",
+      "Autoestima",
+      "Organización",
+      "Relaciones"
+    ],
+    enfoque: "Individual y pareja",
+    tipoTarea: "Plan de continuidad",
+    frecuencia: "Una vez",
+    materiales: "Hoja o notas del celular",
+
+    consiste:
+      "Elegir uno o dos aspectos que la persona quiera continuar practicando después de finalizar el proceso.",
+
+    objetivo:
+      "Transformar el cierre del proceso en una continuidad práctica de los aprendizajes.",
+
+    indicaciones: [
+      "Elige hasta dos aspectos que quieras seguir desarrollando.",
+      "¿Qué quiero seguir practicando?",
+      "¿Por qué es importante?",
+      "¿Qué conducta concreta puedo mantener?",
+      "¿Cómo sabré que estoy avanzando?",
+      "Evita convertirlo en una lista extensa de objetivos."
+    ],
+
+    variacionesDetalle: [
+      {
+        nombre: "Ansiedad",
+        texto: "continuar practicando nuevas formas de afrontamiento."
+      },
+      {
+        nombre: "Autoestima",
+        texto: "mantener conductas de valoración y cuidado personal."
+      },
+      {
+        nombre: "Relaciones",
+        texto: "continuar fortaleciendo formas de comunicación."
+      },
+      {
+        nombre: "Autocuidado",
+        texto: "conservar prácticas importantes para el bienestar."
+      },
+      {
+        nombre: "Organización",
+        texto: "mantener estrategias que favorezcan el funcionamiento cotidiano."
+      }
+    ],
+
+    revision:
+      "Priorizar los aspectos que realmente necesitan continuidad y convertirlos en prácticas concretas."
+  },
+
+  {
+    id: 4,
+    tarea: "Identificar qué señales indican que estoy volviendo a un patrón anterior",
+    modulo: "Módulo 5 • Recursos cambio e integración",
+    etapa: "Prevención",
+    temas: [
+      "Autoconocimiento",
+      "Patrones",
+      "Prevención",
+      "Señales"
+    ],
+    variaciones: [
+      "Ansiedad",
+      "Autoexigencia",
+      "Evitación",
+      "Ira",
+      "Relaciones"
+    ],
+    enfoque: "Individual y pareja",
+    tipoTarea: "Prevención de recaídas",
+    frecuencia: "Una vez",
+    materiales: "Hoja o notas del celular",
+
+    consiste:
+      "Reconocer señales tempranas que indiquen que una forma de responder previamente trabajada está comenzando a reaparecer.",
+
+    objetivo:
+      "Detectar cambios tempranos y actuar antes de que el patrón vuelva a instalarse.",
+
+    indicaciones: [
+      "Piensa en un patrón trabajado.",
+      "Una señal en mis pensamientos.",
+      "Una señal en mis emociones.",
+      "Una señal en mi conducta.",
+      "Una señal en mis relaciones.",
+      "Luego define qué recurso utilizarás cuando aparezca una de estas señales."
+    ],
+
+    variacionesDetalle: [
+      {
+        nombre: "Ansiedad",
+        texto: "detectar aumento de preocupación, comprobación o evitación."
+      },
+      {
+        nombre: "Evitación",
+        texto: "identificar el regreso progresivo de conductas de escape."
+      },
+      {
+        nombre: "Ira",
+        texto: "reconocer señales previas a reacciones intensas."
+      },
+      {
+        nombre: "Autoexigencia",
+        texto: "detectar aumento de exigencia y crítica personal."
+      },
+      {
+        nombre: "Relaciones",
+        texto: "reconocer dinámicas que anteriormente generaban conflicto."
+      }
+    ],
+
+    revision:
+      "Revisar si las señales identificadas son suficientemente tempranas y qué respuesta puede interrumpir el patrón."
+  },
+
+  {
+    id: 5,
+    tarea: "Practicar mantener una conducta aunque el resultado no sea inmediato",
+    modulo: "Módulo 5 • Recursos cambio e integración",
+    etapa: "Continuidad",
+    temas: [
+      "Cambio",
+      "Constancia",
+      "Progreso",
+      "Tolerancia"
+    ],
+    variaciones: [
+      "Ansiedad",
+      "Autocuidado",
+      "Autoestima",
+      "Hábitos",
+      "Relaciones"
+    ],
+    enfoque: "Individual y pareja",
+    tipoTarea: "Consolidación de cambios",
+    frecuencia: "Una vez durante la semana",
+    materiales: "Ninguno",
+
+    consiste:
+      "Mantener una conducta útil aunque sus resultados no aparezcan inmediatamente.",
+
+    objetivo:
+      "Fortalecer la constancia y reducir la tendencia a abandonar cambios únicamente porque sus efectos no son inmediatos.",
+
+    indicaciones: [
+      "Elige una conducta que quieras mantener.",
+      "Durante la semana, practícala según lo acordado aunque no notes un cambio inmediato.",
+      "Al finalizar, observa:",
+      "¿Qué ocurrió al mantenerla?",
+      "¿Qué me hizo querer abandonarla?",
+      "¿Qué evidencia tengo de que vale la pena continuar?",
+      "¿Necesito ajustar algo?"
+    ],
+
+    variacionesDetalle: [
+      {
+        nombre: "Hábitos",
+        texto: "mantener una conducta aunque el resultado requiera tiempo."
+      },
+      {
+        nombre: "Ansiedad",
+        texto: "continuar practicando una respuesta alternativa."
+      },
+      {
+        nombre: "Autoestima",
+        texto: "sostener conductas de cuidado aunque el cambio emocional sea gradual."
+      },
+      {
+        nombre: "Relaciones",
+        texto: "mantener formas de interacción saludables aunque no produzcan resultados inmediatos."
+      },
+      {
+        nombre: "Autocuidado",
+        texto: "continuar una práctica sin exigir resultados instantáneos."
+      }
+    ],
+
+    revision:
+      "Explorar la relación entre expectativas de resultado inmediato y capacidad para mantener cambios."
+  },
+
+  {
+    id: 6,
+    tarea: "Revisar qué puedo hacer cuando un recurso deja de funcionar",
+    modulo: "Módulo 5 • Recursos cambio e integración",
+    etapa: "Prevención",
+    temas: [
+      "Adaptación",
+      "Afrontamiento",
+      "Flexibilidad",
+      "Recursos"
+    ],
+    variaciones: [
+      "Ansiedad",
+      "Duelo",
+      "Estrés",
+      "Ira",
+      "Relaciones"
+    ],
+    enfoque: "Individual y pareja",
+    tipoTarea: "Adaptación de recursos",
+    frecuencia: "Una vez",
+    materiales: "Hoja o notas del celular",
+
+    consiste:
+      "Preparar una respuesta para aquellos momentos en los que una estrategia conocida no produzca el resultado esperado.",
+
+    objetivo:
+      "Evitar interpretar la falta de eficacia de una estrategia como un fracaso personal y favorecer la búsqueda flexible de alternativas.",
+
+    indicaciones: [
+      "Elige un recurso que utilices habitualmente.",
+      "Este recurso suele ayudarme cuando…",
+      "Puede no ser suficiente cuando…",
+      "Si no funciona, puedo probar…",
+      "Si tampoco resulta, puedo pedir…",
+      "Recuerda que utilizar otro recurso no significa que el anterior haya sido inútil."
+    ],
+
+    variacionesDetalle: [
+      {
+        nombre: "Ansiedad",
+        texto: "combinar o adaptar estrategias según la intensidad."
+      },
+      {
+        nombre: "Estrés",
+        texto: "cambiar de recurso cuando la demanda supere lo habitual."
+      },
+      {
+        nombre: "Ira",
+        texto: "utilizar una alternativa si la primera estrategia no reduce la activación."
+      },
+      {
+        nombre: "Relaciones",
+        texto: "modificar la forma de abordar una dificultad interpersonal."
+      },
+      {
+        nombre: "Duelo",
+        texto: "reconocer que diferentes momentos pueden requerir diferentes formas de afrontamiento."
+      }
+    ],
+
+    revision:
+      "Explorar qué alternativas existen y si la persona puede cambiar de estrategia sin interpretarlo como un retroceso."
+  }
+
+];
   /* =====================================
      ESTADO
   ===================================== */
