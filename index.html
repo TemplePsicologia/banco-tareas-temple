@@ -8,19 +8,23 @@
 
   <style>
     :root {
-      --azul-principal: #4C6789;
+      --azul: #4C6789;
       --azul-oscuro: #354D6B;
+      --azul-profundo: #2F4662;
+
       --azul-claro: #EAF0F6;
-      --azul-suave: #F4F7FA;
+      --azul-muy-claro: #F5F8FB;
+      --azul-borde: #D5E0EA;
 
       --texto: #26333F;
-      --texto-suave: #6D7782;
+      --texto-suave: #697583;
 
       --blanco: #FFFFFF;
-      --borde: #DCE3EA;
       --fondo: #F7F9FB;
+      --borde: #DCE3EA;
 
-      --favorito: #D5A84B;
+      --dorado: #C59A45;
+      --dorado-claro: #FFF8E9;
     }
 
     * {
@@ -30,7 +34,7 @@
     }
 
     body {
-      font-family: Arial, sans-serif;
+      font-family: Arial, Helvetica, sans-serif;
       background: var(--fondo);
       color: var(--texto);
       line-height: 1.5;
@@ -42,79 +46,107 @@
       font-family: inherit;
     }
 
+    button {
+      -webkit-tap-highlight-color: transparent;
+    }
+
     .contenedor {
       width: min(1120px, 92%);
       margin: 0 auto;
     }
 
-    /* =========================
+    /* =====================================
        ENCABEZADO
-    ========================= */
+    ===================================== */
 
     header {
-      background: var(--azul-principal);
+      background:
+        linear-gradient(
+          135deg,
+          var(--azul-profundo),
+          var(--azul)
+        );
       color: white;
-      padding: 46px 0 70px;
+      padding: 48px 0 76px;
     }
 
     .marca {
-      font-size: 13px;
-      letter-spacing: 1px;
-      opacity: 0.85;
-      margin-bottom: 12px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.4px;
+      opacity: 0.82;
+      margin-bottom: 14px;
     }
 
     header h1 {
-      font-size: clamp(30px, 5vw, 44px);
+      font-size: clamp(30px, 5vw, 45px);
       line-height: 1.12;
-      max-width: 700px;
+      max-width: 720px;
       margin-bottom: 14px;
       font-weight: 700;
     }
 
     .subtitulo {
-      font-size: 16px;
       max-width: 650px;
+      font-size: 16px;
+      line-height: 1.65;
       opacity: 0.92;
     }
 
-    /* =========================
+    /* =====================================
        BUSCADOR
-    ========================= */
+    ===================================== */
 
     .zona-busqueda {
-      margin-top: -32px;
+      margin-top: -34px;
       position: relative;
     }
 
     .busqueda {
       background: var(--blanco);
       border: 1px solid var(--borde);
-      border-radius: 18px;
+      border-radius: 20px;
       padding: 20px;
-      box-shadow: 0 8px 25px rgba(53, 77, 107, 0.08);
+      box-shadow: 0 10px 30px rgba(47, 70, 98, 0.09);
+    }
+
+    .buscador-contenedor {
+      position: relative;
+    }
+
+    .icono-busqueda {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--azul);
+      font-size: 17px;
+      pointer-events: none;
     }
 
     .buscador {
       width: 100%;
       border: 1px solid var(--borde);
-      border-radius: 11px;
-      padding: 15px 17px;
+      border-radius: 12px;
+      padding: 15px 17px 15px 44px;
       font-size: 15px;
       color: var(--texto);
-      outline: none;
       background: white;
+      outline: none;
+    }
+
+    .buscador::placeholder {
+      color: #929BA4;
     }
 
     .buscador:focus {
-      border-color: var(--azul-principal);
-      box-shadow: 0 0 0 3px rgba(76, 103, 137, 0.10);
+      border-color: var(--azul);
+      box-shadow: 0 0 0 4px rgba(76, 103, 137, 0.09);
     }
 
-    /* =========================
-       CONTENIDO
-    ========================= */
+    /* =====================================
+       RESULTADOS
+    ===================================== */
 
     main {
       padding-bottom: 70px;
@@ -122,91 +154,200 @@
 
     .encabezado-resultados {
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: space-between;
       gap: 15px;
-      margin: 34px 0 18px;
-      flex-wrap: wrap;
+      margin: 36px 0 18px;
     }
 
     .titulo-seccion {
-      font-size: 20px;
+      font-size: 21px;
       font-weight: 700;
     }
 
     .contador {
       color: var(--texto-suave);
-      font-size: 14px;
+      font-size: 13px;
     }
 
-    /* =========================
+    /* =====================================
        FILTROS
-    ========================= */
+    ===================================== */
 
     .filtros {
       background: white;
       border: 1px solid var(--borde);
-      border-radius: 16px;
-      padding: 17px;
-      margin-bottom: 25px;
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 26px;
+      box-shadow: 0 5px 18px rgba(47, 70, 98, 0.035);
+    }
+
+    .filtros-superior {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 17px;
     }
 
     .filtros-titulo {
-      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      font-size: 14px;
       font-weight: 700;
+      color: var(--azul-oscuro);
+    }
+
+    .filtros-icono {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--azul-claro);
+      border-radius: 8px;
+      font-size: 15px;
+    }
+
+    .limpiar-filtros {
+      border: none;
+      background: transparent;
       color: var(--texto-suave);
-      margin-bottom: 12px;
+      font-size: 12px;
+      cursor: pointer;
+      padding: 7px 4px;
+    }
+
+    .limpiar-filtros:hover {
+      color: var(--azul);
     }
 
     .filtros-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
+      gap: 11px;
     }
 
-    select {
+    .filtro-select {
+      position: relative;
+    }
+
+    .filtro-select::before {
+      content: "";
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #B7C6D5;
+      transform: translateY(-50%);
+      pointer-events: none;
+      transition: 0.2s;
+    }
+
+    .filtro-select.activo::before {
+      background: var(--azul);
+    }
+
+    .filtro-select select {
+      appearance: none;
       width: 100%;
-      padding: 11px 12px;
+      padding: 12px 36px 12px 27px;
       border: 1px solid var(--borde);
-      border-radius: 9px;
-      background: white;
+      border-radius: 10px;
+      background:
+        linear-gradient(
+          45deg,
+          transparent 50%,
+          var(--texto-suave) 50%
+        ),
+        linear-gradient(
+          135deg,
+          var(--texto-suave) 50%,
+          transparent 50%
+        ),
+        white;
+      background-position:
+        calc(100% - 16px) 50%,
+        calc(100% - 12px) 50%,
+        0 0;
+      background-size:
+        4px 4px,
+        4px 4px,
+        100% 100%;
+      background-repeat: no-repeat;
       color: var(--texto);
-      font-size: 14px;
+      font-size: 13px;
       cursor: pointer;
       outline: none;
+      transition: 0.2s;
     }
 
-    select:focus {
-      border-color: var(--azul-principal);
+    .filtro-select select:hover {
+      border-color: #BFCEDC;
+      background-color: var(--azul-muy-claro);
     }
 
-    .fila-acciones {
-      display: flex;
-      gap: 9px;
-      margin-top: 12px;
-      flex-wrap: wrap;
+    .filtro-select select:focus {
+      border-color: var(--azul);
+      box-shadow: 0 0 0 3px rgba(76, 103, 137, 0.08);
     }
 
-    .boton-filtro {
-      border: 1px solid var(--borde);
-      background: white;
-      color: var(--texto);
-      padding: 9px 14px;
-      border-radius: 9px;
-      cursor: pointer;
-      font-size: 13px;
-    }
-
-    .boton-filtro.activo {
-      background: var(--azul-claro);
-      border-color: var(--azul-principal);
+    .filtro-select.activo select {
+      border-color: #AFC2D5;
+      background-color: var(--azul-muy-claro);
       color: var(--azul-oscuro);
       font-weight: 600;
     }
 
-    /* =========================
+    .acciones-filtros {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-top: 15px;
+      padding-top: 15px;
+      border-top: 1px solid #EDF1F4;
+      flex-wrap: wrap;
+    }
+
+    .boton-favoritos {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--borde);
+      background: white;
+      color: var(--texto);
+      padding: 10px 15px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .boton-favoritos:hover {
+      border-color: #C1CFDC;
+      background: var(--azul-muy-claro);
+    }
+
+    .boton-favoritos.activo {
+      background: var(--azul);
+      border-color: var(--azul);
+      color: white;
+    }
+
+    .estado-filtros {
+      color: var(--texto-suave);
+      font-size: 12px;
+    }
+
+    /* =====================================
        TARJETAS
-    ========================= */
+    ===================================== */
 
     .tarjetas {
       display: grid;
@@ -222,32 +363,42 @@
       display: flex;
       flex-direction: column;
       min-width: 0;
-      transition: border-color 0.2s, box-shadow 0.2s;
+      transition:
+        transform 0.18s ease,
+        border-color 0.18s ease,
+        box-shadow 0.18s ease;
     }
 
     .tarjeta:hover {
-      border-color: #C8D4E0;
-      box-shadow: 0 7px 20px rgba(53, 77, 107, 0.06);
+      transform: translateY(-2px);
+      border-color: #C8D5E1;
+      box-shadow: 0 9px 25px rgba(47, 70, 98, 0.07);
     }
 
     .tarjeta-cabecera {
       display: flex;
       justify-content: space-between;
-      gap: 12px;
       align-items: flex-start;
+      gap: 12px;
     }
 
     .etapa {
-      color: var(--azul-principal);
-      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      min-height: 27px;
+      padding: 5px 9px;
+      border-radius: 7px;
+      background: var(--azul-claro);
+      color: var(--azul-oscuro);
+      font-size: 11px;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.4px;
     }
 
-    .boton-favorito {
-      width: 38px;
-      height: 38px;
+    .boton-favorito-tarjeta {
+      width: 37px;
+      height: 37px;
       flex-shrink: 0;
       border-radius: 50%;
       border: 1px solid var(--borde);
@@ -258,82 +409,145 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: 0.2s;
     }
 
-    .boton-favorito.activo {
-      color: var(--favorito);
-      background: #FFF8E9;
-      border-color: #EAD9AE;
+    .boton-favorito-tarjeta:hover {
+      background: var(--dorado-claro);
+      border-color: #E7D8B4;
+    }
+
+    .boton-favorito-tarjeta.activo {
+      color: var(--dorado);
+      background: var(--dorado-claro);
+      border-color: #E7D8B4;
     }
 
     .tarjeta h2 {
-      font-size: 20px;
-      line-height: 1.3;
-      margin: 12px 0 15px;
+      font-size: 19px;
+      line-height: 1.35;
+      margin: 15px 0 14px;
     }
 
     .datos-tarjeta {
       display: flex;
       flex-wrap: wrap;
       gap: 7px;
-      margin-bottom: 15px;
+      margin-bottom: 14px;
     }
 
     .chip {
-      background: var(--azul-suave);
-      color: var(--azul-oscuro);
-      border-radius: 20px;
+      background: #F2F5F8;
+      color: #566575;
+      border-radius: 7px;
       padding: 5px 9px;
-      font-size: 12px;
+      font-size: 11px;
+      border: 1px solid #E7ECF1;
     }
 
     .temas {
       color: var(--texto-suave);
-      font-size: 13px;
-      line-height: 1.6;
+      font-size: 12px;
+      line-height: 1.65;
       margin-bottom: 20px;
     }
 
     .boton-ver {
       width: 100%;
       border: none;
-      background: var(--azul-principal);
+      background: var(--azul);
       color: white;
       padding: 12px 16px;
       border-radius: 9px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 600;
       margin-top: auto;
+      transition: 0.2s;
     }
 
     .boton-ver:hover {
       background: var(--azul-oscuro);
     }
 
-    /* =========================
+    /* =====================================
+       PAGINACIÓN
+    ===================================== */
+
+    .paginacion {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 9px;
+      margin-top: 30px;
+    }
+
+    .pagina-boton {
+      min-width: 105px;
+      height: 42px;
+      border: 1px solid var(--borde);
+      border-radius: 10px;
+      background: white;
+      color: var(--azul-oscuro);
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .pagina-boton:hover:not(:disabled) {
+      background: var(--azul-claro);
+      border-color: #BFCEDC;
+    }
+
+    .pagina-boton:disabled {
+      opacity: 0.42;
+      cursor: not-allowed;
+    }
+
+    .pagina-numero {
+      min-width: 115px;
+      text-align: center;
+      color: var(--texto-suave);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    /* =====================================
        SIN RESULTADOS
-    ========================= */
+    ===================================== */
 
     .vacio {
       grid-column: 1 / -1;
       background: white;
       border: 1px solid var(--borde);
-      border-radius: 16px;
+      border-radius: 17px;
       text-align: center;
-      padding: 55px 20px;
+      padding: 65px 20px;
       color: var(--texto-suave);
     }
 
-    /* =========================
+    .vacio-icono {
+      font-size: 30px;
+      margin-bottom: 10px;
+      opacity: 0.7;
+    }
+
+    .vacio strong {
+      display: block;
+      color: var(--texto);
+      margin-bottom: 5px;
+    }
+
+    /* =====================================
        MODAL
-    ========================= */
+    ===================================== */
 
     .modal-fondo {
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(28, 40, 53, 0.55);
+      background: rgba(28, 40, 53, 0.58);
       padding: 20px;
       overflow-y: auto;
       z-index: 100;
@@ -359,7 +573,7 @@
       width: 40px;
       height: 40px;
       border: none;
-      background: var(--azul-suave);
+      background: var(--azul-claro);
       border-radius: 50%;
       color: var(--azul-oscuro);
       font-size: 24px;
@@ -367,7 +581,7 @@
     }
 
     .modal-etapa {
-      color: var(--azul-principal);
+      color: var(--azul);
       font-size: 12px;
       font-weight: 700;
       text-transform: uppercase;
@@ -394,7 +608,7 @@
     }
 
     .dato {
-      background: var(--azul-suave);
+      background: var(--azul-muy-claro);
       padding: 13px 15px;
     }
 
@@ -415,8 +629,8 @@
     }
 
     .seccion h3 {
-      color: var(--azul-principal);
-      font-size: 14px;
+      color: var(--azul);
+      font-size: 13px;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       margin-bottom: 10px;
@@ -437,7 +651,8 @@
     }
 
     .variacion {
-      background: var(--azul-suave);
+      background: var(--azul-muy-claro);
+      border: 1px solid #E4EAF0;
       border-radius: 11px;
       padding: 13px 15px;
       margin-bottom: 9px;
@@ -470,22 +685,23 @@
       padding: 11px 15px;
       border-radius: 9px;
       cursor: pointer;
-      font-size: 14px;
+      font-size: 13px;
+      font-weight: 600;
     }
 
     .accion:hover {
-      background: var(--azul-suave);
+      background: var(--azul-muy-claro);
     }
 
     .accion.favorito-activo {
-      color: var(--favorito);
-      border-color: #EAD9AE;
-      background: #FFF8E9;
+      color: var(--dorado);
+      border-color: #E7D8B4;
+      background: var(--dorado-claro);
     }
 
-    /* =========================
+    /* =====================================
        AVISO COPIADO
-    ========================= */
+    ===================================== */
 
     .aviso-copiado {
       position: fixed;
@@ -496,7 +712,7 @@
       color: white;
       padding: 11px 18px;
       border-radius: 9px;
-      font-size: 14px;
+      font-size: 13px;
       display: none;
       z-index: 200;
     }
@@ -505,33 +721,35 @@
       display: block;
     }
 
-    /* =========================
+    /* =====================================
        RESPONSIVE
-    ========================= */
+    ===================================== */
 
-    @media (max-width: 750px) {
+    @media (max-width: 800px) {
 
       .filtros-grid {
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       .tarjetas {
         grid-template-columns: 1fr;
       }
-
-      .modal {
-        padding: 25px 20px;
-      }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 550px) {
 
       header {
-        padding: 36px 0 60px;
+        padding: 38px 0 65px;
       }
 
       .filtros-grid {
         grid-template-columns: 1fr;
+      }
+
+      .encabezado-resultados {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
       }
 
       .datos-modal {
@@ -544,14 +762,30 @@
 
       .modal {
         margin: 10px auto;
+        padding: 25px 20px;
+      }
+
+      .paginacion {
+        gap: 6px;
+      }
+
+      .pagina-boton {
+        min-width: 88px;
+      }
+
+      .pagina-numero {
+        min-width: 80px;
+        font-size: 12px;
       }
     }
   </style>
 </head>
 
+
 <body>
 
 <header>
+
   <div class="contenedor">
 
     <div class="marca">
@@ -567,6 +801,7 @@
     </p>
 
   </div>
+
 </header>
 
 
@@ -576,12 +811,18 @@
 
     <div class="busqueda">
 
-      <input
-        type="search"
-        id="buscador"
-        class="buscador"
-        placeholder="🔎 Buscar una tarea, tema o concepto..."
-      >
+      <div class="buscador-contenedor">
+
+        <span class="icono-busqueda">⌕</span>
+
+        <input
+          type="search"
+          id="buscador"
+          class="buscador"
+          placeholder="Buscar una tarea, tema o concepto..."
+        >
+
+      </div>
 
     </div>
 
@@ -603,57 +844,148 @@
     </div>
 
 
+    <!-- FILTROS -->
+
     <div class="filtros">
 
-      <div class="filtros-titulo">
-        FILTRAR POR
+      <div class="filtros-superior">
+
+        <div class="filtros-titulo">
+
+          <span class="filtros-icono">
+            ☷
+          </span>
+
+          <span>
+            Filtrar tareas
+          </span>
+
+        </div>
+
+        <button
+          type="button"
+          id="limpiarFiltros"
+          class="limpiar-filtros"
+        >
+          Limpiar filtros
+        </button>
+
       </div>
+
 
       <div class="filtros-grid">
 
-        <select id="filtroModulo">
-          <option value="">Todos los módulos</option>
-        </select>
+        <div class="filtro-select" id="contenedorModulo">
+          <select id="filtroModulo">
+            <option value="">Todos los módulos</option>
+          </select>
+        </div>
 
-        <select id="filtroEtapa">
-          <option value="">Todas las etapas</option>
-        </select>
 
-        <select id="filtroTema">
-          <option value="">Todos los temas</option>
-        </select>
+        <div class="filtro-select" id="contenedorEtapa">
+          <select id="filtroEtapa">
+            <option value="">Todas las etapas</option>
+          </select>
+        </div>
 
-        <select id="filtroVariacion">
-          <option value="">Todas las variaciones</option>
-        </select>
 
-        <select id="filtroEnfoque">
-          <option value="">Todos los enfoques</option>
-        </select>
+        <div class="filtro-select" id="contenedorTema">
+          <select id="filtroTema">
+            <option value="">Todos los temas</option>
+          </select>
+        </div>
 
-        <select id="filtroTipo">
-          <option value="">Todos los tipos de tarea</option>
-        </select>
+
+        <div class="filtro-select" id="contenedorVariacion">
+          <select id="filtroVariacion">
+            <option value="">Todas las variaciones</option>
+          </select>
+        </div>
+
+
+        <div class="filtro-select" id="contenedorEnfoque">
+          <select id="filtroEnfoque">
+            <option value="">Todos los enfoques</option>
+          </select>
+        </div>
+
+
+        <div class="filtro-select" id="contenedorTipo">
+          <select id="filtroTipo">
+            <option value="">Todos los tipos</option>
+          </select>
+        </div>
 
       </div>
 
 
-      <div class="fila-acciones">
+      <div class="acciones-filtros">
 
         <button
           type="button"
           id="botonFavoritos"
-          class="boton-filtro"
+          class="boton-favoritos"
         >
-          ⭐ Solo favoritas
+          <span>☆</span>
+          <span id="textoFavoritos">
+            Solo favoritas
+          </span>
         </button>
+
+
+        <div
+          class="estado-filtros"
+          id="estadoFiltros"
+        >
+          Explora todas las tareas
+        </div>
 
       </div>
 
     </div>
 
 
-    <div class="tarjetas" id="tarjetas"></div>
+    <!-- TARJETAS -->
+
+    <div
+      class="tarjetas"
+      id="tarjetas"
+    ></div>
+
+
+    <!-- PAGINACIÓN -->
+
+    <div
+      class="paginacion"
+      id="paginacion"
+    >
+
+      <button
+        type="button"
+        id="anterior"
+        class="pagina-boton"
+      >
+        ← Anterior
+      </button>
+
+
+      <div
+        id="paginaNumero"
+        class="pagina-numero"
+      >
+        Página 1 de 1
+      </div>
+
+
+      <button
+        type="button"
+        id="siguiente"
+        class="pagina-boton"
+      >
+        Siguiente →
+      </button>
+
+    </div>
 
   </div>
 
@@ -662,7 +994,10 @@
 
 <!-- MODAL -->
 
-<div class="modal-fondo" id="modalFondo">
+<div
+  class="modal-fondo"
+  id="modalFondo"
+>
 
   <div class="modal">
 
@@ -675,16 +1010,29 @@
       ×
     </button>
 
-    <div class="modal-etapa" id="modalEtapa"></div>
 
-    <h2 id="modalTitulo"></h2>
+    <div
+      class="modal-etapa"
+      id="modalEtapa"
+    ></div>
 
-    <div class="datos-modal" id="modalDatos"></div>
+
+    <h2
+      id="modalTitulo"
+    ></h2>
+
+
+    <div
+      class="datos-modal"
+      id="modalDatos"
+    ></div>
 
 
     <div class="seccion">
 
-      <h3>¿En qué consiste?</h3>
+      <h3>
+        ¿En qué consiste?
+      </h3>
 
       <p id="modalConsiste"></p>
 
@@ -693,7 +1041,9 @@
 
     <div class="seccion">
 
-      <h3>Objetivo</h3>
+      <h3>
+        Objetivo
+      </h3>
 
       <p id="modalObjetivo"></p>
 
@@ -702,7 +1052,9 @@
 
     <div class="seccion">
 
-      <h3>Indicaciones</h3>
+      <h3>
+        Indicaciones
+      </h3>
 
       <div id="modalIndicaciones"></div>
 
@@ -711,7 +1063,9 @@
 
     <div class="seccion">
 
-      <h3>Variaciones</h3>
+      <h3>
+        Variaciones
+      </h3>
 
       <div id="modalVariaciones"></div>
 
@@ -720,7 +1074,9 @@
 
     <div class="seccion">
 
-      <h3>Para revisar en sesión</h3>
+      <h3>
+        Para revisar en sesión
+      </h3>
 
       <p id="modalRevision"></p>
 
@@ -734,8 +1090,9 @@
         id="modalFavorito"
         class="accion"
       >
-        ⭐ Agregar a favoritos
+        ☆ Agregar a favoritos
       </button>
+
 
       <button
         type="button"
@@ -763,28 +1120,23 @@
 
 <script>
 
-  /* =========================
+  /* =====================================
      DATOS
-  ========================= */
+  ===================================== */
 
   const tareas = [
 
     {
       id: 1,
-
       tarea: "Construir mi plan personal para mantener los cambios",
-
       modulo: "Módulo 5 • Recursos cambio e integración",
-
       etapa: "Integración final",
-
       temas: [
         "Continuidad",
         "Integración",
         "Prevención",
         "Recursos"
       ],
-
       variaciones: [
         "Afrontamiento",
         "Ansiedad",
@@ -793,13 +1145,9 @@
         "Hábitos",
         "Relaciones"
       ],
-
       enfoque: "Individual y pareja",
-
       tipoTarea: "Plan de mantenimiento",
-
       frecuencia: "Una vez",
-
       materiales: "Hoja o notas del celular",
 
       consiste:
@@ -816,7 +1164,7 @@
         "Lo que puedo hacer si aparece una dificultad.",
         "Las personas o recursos externos a los que puedo recurrir.",
         "Lo que quiero seguir construyendo.",
-        "Keep the plan brief and practical; it should be something the person can consult/use."
+        "Mantén el plan breve y práctico; debería ser algo que la persona pueda consultar y utilizar."
       ],
 
       variacionesDetalle: [
@@ -853,20 +1201,15 @@
 
     {
       id: 2,
-
       tarea: "Reconocer qué aprendí sobre la manera en que puedo afrontar las dificultades",
-
       modulo: "Módulo 5 • Recursos cambio e integración",
-
       etapa: "Reflexionar",
-
       temas: [
         "Afrontamiento",
         "Aprendizaje",
         "Autoconocimiento",
         "Integración"
       ],
-
       variaciones: [
         "Ansiedad",
         "Autoestima",
@@ -874,13 +1217,9 @@
         "Estrés",
         "Relaciones"
       ],
-
       enfoque: "Individual y pareja",
-
       tipoTarea: "Integración de aprendizajes",
-
       frecuencia: "Una vez",
-
       materiales: "Hoja o notas del celular",
 
       consiste:
@@ -895,7 +1234,7 @@
         "Un recurso que antes no utilizaba y ahora puedo utilizar es…",
         "Cuando vuelva a aparecer una dificultad, quiero recordar…",
         "Algo que todavía quiero seguir practicando es…",
-        "Write concrete answers based on real experiences."
+        "Escribe respuestas concretas basadas en experiencias reales."
       ],
 
       variacionesDetalle: [
@@ -928,20 +1267,15 @@
 
     {
       id: 3,
-
       tarea: "Elegir qué quiero seguir practicando después de terminar este proceso",
-
       modulo: "Módulo 5 • Recursos cambio e integración",
-
       etapa: "Continuidad",
-
       temas: [
         "Cambio",
         "Continuidad",
         "Objetivos",
         "Práctica"
       ],
-
       variaciones: [
         "Ansiedad",
         "Autocuidado",
@@ -949,13 +1283,9 @@
         "Organización",
         "Relaciones"
       ],
-
       enfoque: "Individual y pareja",
-
       tipoTarea: "Plan de continuidad",
-
       frecuencia: "Una vez",
-
       materiales: "Hoja o notas del celular",
 
       consiste:
@@ -970,7 +1300,7 @@
         "¿Por qué es importante?",
         "¿Qué conducta concreta puedo mantener?",
         "¿Cómo sabré que estoy avanzando?",
-        "Avoid turning it into an extensive list of objectives."
+        "Evita convertirlo en una lista extensa de objetivos."
       ],
 
       variacionesDetalle: [
@@ -997,26 +1327,21 @@
       ],
 
       revision:
-        "Priorizar the aspects that truly need continuity and turn them into concrete practices."
+        "Priorizar los aspectos que realmente necesitan continuidad y convertirlos en prácticas concretas."
     },
 
 
     {
       id: 4,
-
       tarea: "Identificar qué señales indican que estoy volviendo a un patrón anterior",
-
       modulo: "Módulo 5 • Recursos cambio e integración",
-
       etapa: "Prevención",
-
       temas: [
         "Autoconocimiento",
         "Patrones",
         "Prevención",
         "Señales"
       ],
-
       variaciones: [
         "Ansiedad",
         "Autoexigencia",
@@ -1024,13 +1349,9 @@
         "Ira",
         "Relaciones"
       ],
-
       enfoque: "Individual y pareja",
-
       tipoTarea: "Prevención de recaídas",
-
       frecuencia: "Una vez",
-
       materiales: "Hoja o notas del celular",
 
       consiste:
@@ -1040,12 +1361,12 @@
         "Detectar cambios tempranos y actuar antes de que el patrón vuelva a instalarse.",
 
       indicaciones: [
-        "Think of a pattern worked on.",
+        "Piensa en un patrón trabajado.",
         "Una señal en mis pensamientos.",
         "Una señal en mis emociones.",
         "Una señal en mi conducta.",
         "Una señal en mis relaciones.",
-        "Then define what resource you will use when one of these signals appears."
+        "Luego define qué recurso utilizarás cuando aparezca una de estas señales."
       ],
 
       variacionesDetalle: [
@@ -1078,20 +1399,15 @@
 
     {
       id: 5,
-
       tarea: "Practicar mantener una conducta aunque el resultado no sea inmediato",
-
       modulo: "Módulo 5 • Recursos cambio e integración",
-
       etapa: "Continuidad",
-
       temas: [
         "Cambio",
         "Constancia",
         "Progreso",
         "Tolerancia"
       ],
-
       variaciones: [
         "Ansiedad",
         "Autocuidado",
@@ -1099,13 +1415,9 @@
         "Hábitos",
         "Relaciones"
       ],
-
       enfoque: "Individual y pareja",
-
       tipoTarea: "Consolidación de cambios",
-
       frecuencia: "Una vez durante la semana",
-
       materiales: "Ninguno",
 
       consiste:
@@ -1154,9 +1466,11 @@
   ];
 
 
-  /* =========================
-     FAVORITOS
-  ========================= */
+  /* =====================================
+     ESTADO
+  ===================================== */
+
+  const TAREAS_POR_PAGINA = 20;
 
   let favoritos = JSON.parse(
     localStorage.getItem("favoritosTareasTemple") || "[]"
@@ -1164,11 +1478,12 @@
 
   let mostrarSoloFavoritos = false;
   let tareaActual = null;
+  let paginaActual = 1;
 
 
-  /* =========================
+  /* =====================================
      ELEMENTOS
-  ========================= */
+  ===================================== */
 
   const buscador = document.getElementById("buscador");
   const tarjetas = document.getElementById("tarjetas");
@@ -1182,15 +1497,21 @@
   const filtroTipo = document.getElementById("filtroTipo");
 
   const botonFavoritos = document.getElementById("botonFavoritos");
+  const textoFavoritos = document.getElementById("textoFavoritos");
+  const estadoFiltros = document.getElementById("estadoFiltros");
+
+  const anterior = document.getElementById("anterior");
+  const siguiente = document.getElementById("siguiente");
+  const paginaNumero = document.getElementById("paginaNumero");
 
   const modalFondo = document.getElementById("modalFondo");
   const modalFavorito = document.getElementById("modalFavorito");
   const modalCopiar = document.getElementById("modalCopiar");
 
 
-  /* =========================
+  /* =====================================
      FILTROS
-  ========================= */
+  ===================================== */
 
   function obtenerValoresUnicos(campo) {
 
@@ -1209,6 +1530,7 @@
     });
 
     return [...new Set(valores)].sort();
+
   }
 
 
@@ -1228,12 +1550,35 @@
   }
 
 
-  llenarFiltro(filtroModulo, obtenerValoresUnicos("modulo"));
-  llenarFiltro(filtroEtapa, obtenerValoresUnicos("etapa"));
-  llenarFiltro(filtroTema, obtenerValoresUnicos("temas"));
-  llenarFiltro(filtroVariacion, obtenerValoresUnicos("variaciones"));
-  llenarFiltro(filtroEnfoque, obtenerValoresUnicos("enfoque"));
-  llenarFiltro(filtroTipo, obtenerValoresUnicos("tipoTarea"));
+  llenarFiltro(
+    filtroModulo,
+    obtenerValoresUnicos("modulo")
+  );
+
+  llenarFiltro(
+    filtroEtapa,
+    obtenerValoresUnicos("etapa")
+  );
+
+  llenarFiltro(
+    filtroTema,
+    obtenerValoresUnicos("temas")
+  );
+
+  llenarFiltro(
+    filtroVariacion,
+    obtenerValoresUnicos("variaciones")
+  );
+
+  llenarFiltro(
+    filtroEnfoque,
+    obtenerValoresUnicos("enfoque")
+  );
+
+  llenarFiltro(
+    filtroTipo,
+    obtenerValoresUnicos("tipoTarea")
+  );
 
 
   function coincideFiltro(valor, filtro) {
@@ -1249,15 +1594,91 @@
   }
 
 
-  /* =========================
-     MOSTRAR TAREAS
-  ========================= */
+  function actualizarEstadoVisualFiltros() {
 
-  function mostrarTareas() {
+    const filtros = [
+      {
+        select: filtroModulo,
+        contenedor: "contenedorModulo"
+      },
+      {
+        select: filtroEtapa,
+        contenedor: "contenedorEtapa"
+      },
+      {
+        select: filtroTema,
+        contenedor: "contenedorTema"
+      },
+      {
+        select: filtroVariacion,
+        contenedor: "contenedorVariacion"
+      },
+      {
+        select: filtroEnfoque,
+        contenedor: "contenedorEnfoque"
+      },
+      {
+        select: filtroTipo,
+        contenedor: "contenedorTipo"
+      }
+    ];
 
-    const texto = buscador.value.toLowerCase().trim();
+    filtros.forEach(item => {
 
-    const resultados = tareas.filter(tarea => {
+      const contenedor =
+        document.getElementById(item.contenedor);
+
+      contenedor.classList.toggle(
+        "activo",
+        Boolean(item.select.value)
+      );
+
+    });
+
+  }
+
+
+  function limpiarTodosLosFiltros() {
+
+    buscador.value = "";
+
+    filtroModulo.value = "";
+    filtroEtapa.value = "";
+    filtroTema.value = "";
+    filtroVariacion.value = "";
+    filtroEnfoque.value = "";
+    filtroTipo.value = "";
+
+    mostrarSoloFavoritos = false;
+
+    actualizarBotonFavoritos();
+
+    paginaActual = 1;
+
+    mostrarTareas();
+
+  }
+
+
+  document
+    .getElementById("limpiarFiltros")
+    .addEventListener(
+      "click",
+      limpiarTodosLosFiltros
+    );
+
+
+  /* =====================================
+     OBTENER RESULTADOS
+  ===================================== */
+
+  function obtenerResultados() {
+
+    const texto =
+      buscador.value.toLowerCase().trim();
+
+
+    return tareas.filter(tarea => {
 
       const textoCompleto = [
 
@@ -1268,13 +1689,17 @@
         tarea.variaciones.join(" "),
         tarea.enfoque,
         tarea.tipoTarea,
-        tarea.frecuencia
+        tarea.frecuencia,
+        tarea.materiales,
+        tarea.consiste,
+        tarea.objetivo
 
       ].join(" ").toLowerCase();
 
 
       const coincideBusqueda =
-        !texto || textoCompleto.includes(texto);
+        !texto ||
+        textoCompleto.includes(texto);
 
 
       const coincideFavorito =
@@ -1288,27 +1713,104 @@
 
         coincideFavorito &&
 
-        coincideFiltro(tarea.modulo, filtroModulo.value) &&
+        coincideFiltro(
+          tarea.modulo,
+          filtroModulo.value
+        ) &&
 
-        coincideFiltro(tarea.etapa, filtroEtapa.value) &&
+        coincideFiltro(
+          tarea.etapa,
+          filtroEtapa.value
+        ) &&
 
-        coincideFiltro(tarea.temas, filtroTema.value) &&
+        coincideFiltro(
+          tarea.temas,
+          filtroTema.value
+        ) &&
 
-        coincideFiltro(tarea.variaciones, filtroVariacion.value) &&
+        coincideFiltro(
+          tarea.variaciones,
+          filtroVariacion.value
+        ) &&
 
-        coincideFiltro(tarea.enfoque, filtroEnfoque.value) &&
+        coincideFiltro(
+          tarea.enfoque,
+          filtroEnfoque.value
+        ) &&
 
-        coincideFiltro(tarea.tipoTarea, filtroTipo.value)
+        coincideFiltro(
+          tarea.tipoTarea,
+          filtroTipo.value
+        )
 
       );
 
     });
 
+  }
+
+
+  /* =====================================
+     MOSTRAR TAREAS
+  ===================================== */
+
+  function mostrarTareas() {
+
+    actualizarEstadoVisualFiltros();
+
+
+    const resultados =
+      obtenerResultados();
+
+
+    const totalPaginas =
+      Math.max(
+        1,
+        Math.ceil(
+          resultados.length /
+          TAREAS_POR_PAGINA
+        )
+      );
+
+
+    if (paginaActual > totalPaginas) {
+      paginaActual = totalPaginas;
+    }
+
+
+    const inicio =
+      (paginaActual - 1) *
+      TAREAS_POR_PAGINA;
+
+
+    const fin =
+      inicio +
+      TAREAS_POR_PAGINA;
+
+
+    const resultadosPagina =
+      resultados.slice(inicio, fin);
+
 
     contador.textContent =
       `${resultados.length} ${
-        resultados.length === 1 ? "tarea" : "tareas"
+        resultados.length === 1
+          ? "tarea"
+          : "tareas"
       }`;
+
+
+    if (mostrarSoloFavoritos) {
+
+      estadoFiltros.textContent =
+        `Mostrando tus ${resultados.length === 1 ? "favorita" : "favoritas"}`;
+
+    } else {
+
+      estadoFiltros.textContent =
+        "Explora todas las tareas";
+
+    }
 
 
     tarjetas.innerHTML = "";
@@ -1317,120 +1819,285 @@
     if (resultados.length === 0) {
 
       tarjetas.innerHTML = `
+
         <div class="vacio">
-          No encontramos tareas con esos criterios.
+
+          <div class="vacio-icono">
+            ◌
+          </div>
+
+          <strong>
+            No encontramos tareas
+          </strong>
+
+          <span>
+            Prueba con otros filtros o términos de búsqueda.
+          </span>
+
         </div>
+
       `;
 
-      return;
+    } else {
+
+      resultadosPagina.forEach(
+        tarea => crearTarjeta(tarea)
+      );
+
     }
 
 
-    resultados.forEach(tarea => {
+    actualizarPaginacion(
+      resultados.length,
+      totalPaginas
+    );
 
-      const esFavorita = favoritos.includes(tarea.id);
-
-      const tarjeta = document.createElement("article");
-
-      tarjeta.className = "tarjeta";
+  }
 
 
-      tarjeta.innerHTML = `
+  /* =====================================
+     CREAR TARJETA
+  ===================================== */
 
-        <div class="tarjeta-cabecera">
+  function crearTarjeta(tarea) {
 
-          <div class="etapa">
-            ${tarea.etapa}
-          </div>
+    const esFavorita =
+      favoritos.includes(tarea.id);
 
-          <button
-            type="button"
-            class="boton-favorito ${
-              esFavorita ? "activo" : ""
-            }"
-            aria-label="${
-              esFavorita
-                ? "Quitar de favoritos"
-                : "Agregar a favoritos"
-            }"
-          >
-            ${esFavorita ? "★" : "☆"}
-          </button>
 
+    const tarjeta =
+      document.createElement("article");
+
+
+    tarjeta.className = "tarjeta";
+
+
+    tarjeta.innerHTML = `
+
+      <div class="tarjeta-cabecera">
+
+        <div class="etapa">
+          ${tarea.etapa}
         </div>
-
-
-        <h2>
-          ${tarea.tarea}
-        </h2>
-
-
-        <div class="datos-tarjeta">
-
-          <span class="chip">
-            ${tarea.tipoTarea}
-          </span>
-
-          <span class="chip">
-            ${tarea.enfoque}
-          </span>
-
-        </div>
-
-
-        <div class="temas">
-          ${tarea.temas.join(" · ")}
-        </div>
-
 
         <button
           type="button"
-          class="boton-ver"
+          class="boton-favorito-tarjeta ${
+            esFavorita ? "activo" : ""
+          }"
+          aria-label="${
+            esFavorita
+              ? "Quitar de favoritos"
+              : "Agregar a favoritos"
+          }"
         >
-          Ver tarea →
+          ${esFavorita ? "★" : "☆"}
         </button>
 
-      `;
+      </div>
 
 
-      tarjeta
-        .querySelector(".boton-favorito")
-        .addEventListener("click", evento => {
+      <h2>
+        ${tarea.tarea}
+      </h2>
+
+
+      <div class="datos-tarjeta">
+
+        <span class="chip">
+          ${tarea.tipoTarea}
+        </span>
+
+        <span class="chip">
+          ${tarea.enfoque}
+        </span>
+
+      </div>
+
+
+      <div class="temas">
+        ${tarea.temas.join(" · ")}
+      </div>
+
+
+      <button
+        type="button"
+        class="boton-ver"
+      >
+        Ver tarea →
+      </button>
+
+    `;
+
+
+    tarjeta
+      .querySelector(
+        ".boton-favorito-tarjeta"
+      )
+      .addEventListener(
+        "click",
+        evento => {
 
           evento.stopPropagation();
 
           alternarFavorito(tarea.id);
 
-        });
+        }
+      );
 
 
-      tarjeta
-        .querySelector(".boton-ver")
-        .addEventListener("click", () => {
+    tarjeta
+      .querySelector(".boton-ver")
+      .addEventListener(
+        "click",
+        () => abrirTarea(tarea)
+      );
 
-          abrirTarea(tarea);
 
-        });
-
-
-      tarjetas.appendChild(tarjeta);
-
-    });
+    tarjetas.appendChild(tarjeta);
 
   }
 
 
-  /* =========================
+  /* =====================================
+     PAGINACIÓN
+  ===================================== */
+
+  function actualizarPaginacion(
+    totalResultados,
+    totalPaginas
+  ) {
+
+    paginaNumero.textContent =
+      `Página ${paginaActual} de ${totalPaginas}`;
+
+
+    anterior.disabled =
+      paginaActual === 1;
+
+
+    siguiente.disabled =
+      paginaActual === totalPaginas ||
+      totalResultados === 0;
+
+
+    document
+      .getElementById("paginacion")
+      .style.display =
+        totalResultados === 0
+          ? "none"
+          : "flex";
+
+  }
+
+
+  anterior.addEventListener(
+    "click",
+    () => {
+
+      if (paginaActual > 1) {
+
+        paginaActual--;
+
+        mostrarTareas();
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+  );
+
+
+  siguiente.addEventListener(
+    "click",
+    () => {
+
+      const resultados =
+        obtenerResultados();
+
+      const totalPaginas =
+        Math.ceil(
+          resultados.length /
+          TAREAS_POR_PAGINA
+        );
+
+
+      if (
+        paginaActual <
+        totalPaginas
+      ) {
+
+        paginaActual++;
+
+        mostrarTareas();
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+
+    }
+  );
+
+
+  /* =====================================
      FAVORITOS
-  ========================= */
+  ===================================== */
+
+  function guardarFavoritos() {
+
+    localStorage.setItem(
+      "favoritosTareasTemple",
+      JSON.stringify(favoritos)
+    );
+
+  }
+
+
+  function actualizarBotonFavoritos() {
+
+    if (mostrarSoloFavoritos) {
+
+      botonFavoritos.classList.add("activo");
+
+      botonFavoritos.innerHTML = `
+        <span>★</span>
+        <span id="textoFavoritos">
+          Ver todas
+        </span>
+      `;
+
+    } else {
+
+      botonFavoritos.classList.remove("activo");
+
+      botonFavoritos.innerHTML = `
+        <span>☆</span>
+        <span id="textoFavoritos">
+          Solo favoritas
+        </span>
+      `;
+
+    }
+
+  }
+
 
   function alternarFavorito(id) {
 
     if (favoritos.includes(id)) {
 
-      favoritos = favoritos.filter(
-        favoritoId => favoritoId !== id
-      );
+      favoritos =
+        favoritos.filter(
+          favoritoId =>
+            favoritoId !== id
+        );
 
     } else {
 
@@ -1439,40 +2106,20 @@
     }
 
 
-    localStorage.setItem(
-      "favoritosTareasTemple",
-      JSON.stringify(favoritos)
-    );
+    guardarFavoritos();
 
 
     mostrarTareas();
 
 
-    if (tareaActual && tareaActual.id === id) {
+    if (
+      tareaActual &&
+      tareaActual.id === id
+    ) {
 
       actualizarBotonFavoritoModal();
 
     }
-
-  }
-
-
-  function actualizarBotonFavoritoModal() {
-
-    const esFavorita =
-      favoritos.includes(tareaActual.id);
-
-
-    modalFavorito.textContent =
-      esFavorita
-        ? "★ Quitar de favoritos"
-        : "☆ Agregar a favoritos";
-
-
-    modalFavorito.classList.toggle(
-      "favorito-activo",
-      esFavorita
-    );
 
   }
 
@@ -1484,12 +2131,9 @@
       mostrarSoloFavoritos =
         !mostrarSoloFavoritos;
 
+      paginaActual = 1;
 
-      botonFavoritos.classList.toggle(
-        "activo",
-        mostrarSoloFavoritos
-      );
-
+      actualizarBotonFavoritos();
 
       mostrarTareas();
 
@@ -1497,24 +2141,28 @@
   );
 
 
-  /* =========================
-     ABRIR TAREA
-  ========================= */
+  /* =====================================
+     MODAL
+  ===================================== */
 
   function abrirTarea(tarea) {
 
     tareaActual = tarea;
 
 
-    document.getElementById("modalEtapa").textContent =
-      tarea.etapa;
+    document.getElementById(
+      "modalEtapa"
+    ).textContent = tarea.etapa;
 
 
-    document.getElementById("modalTitulo").textContent =
-      tarea.tarea;
+    document.getElementById(
+      "modalTitulo"
+    ).textContent = tarea.tarea;
 
 
-    document.getElementById("modalDatos").innerHTML = `
+    document.getElementById(
+      "modalDatos"
+    ).innerHTML = `
 
       <div class="dato">
         <strong>MÓDULO</strong>
@@ -1549,20 +2197,27 @@
     `;
 
 
-    document.getElementById("modalConsiste").textContent =
-      tarea.consiste;
+    document.getElementById(
+      "modalConsiste"
+    ).textContent = tarea.consiste;
 
 
-    document.getElementById("modalObjetivo").textContent =
-      tarea.objetivo;
+    document.getElementById(
+      "modalObjetivo"
+    ).textContent = tarea.objetivo;
 
 
-    document.getElementById("modalIndicaciones").innerHTML = `
+    document.getElementById(
+      "modalIndicaciones"
+    ).innerHTML = `
 
       <ul>
 
         ${tarea.indicaciones
-          .map(item => `<li>${item}</li>`)
+          .map(
+            item =>
+              `<li>${item}</li>`
+          )
           .join("")}
 
       </ul>
@@ -1570,52 +2225,85 @@
     `;
 
 
-    document.getElementById("modalVariaciones").innerHTML =
+    document.getElementById(
+      "modalVariaciones"
+    ).innerHTML =
 
       tarea.variacionesDetalle
-        .map(variacion => `
+        .map(
+          variacion => `
 
-          <div class="variacion">
+            <div class="variacion">
 
-            <strong>
-              ${variacion.nombre}
-            </strong>
+              <strong>
+                ${variacion.nombre}
+              </strong>
 
-            <span>
-              ${variacion.texto}
-            </span>
+              <span>
+                ${variacion.texto}
+              </span>
 
-          </div>
+            </div>
 
-        `)
+          `
+        )
         .join("");
 
 
-    document.getElementById("modalRevision").textContent =
-      tarea.revision;
+    document.getElementById(
+      "modalRevision"
+    ).textContent = tarea.revision;
 
 
     actualizarBotonFavoritoModal();
 
 
-    modalFondo.classList.add("visible");
+    modalFondo.classList.add(
+      "visible"
+    );
 
-    document.body.style.overflow = "hidden";
+
+    document.body.style.overflow =
+      "hidden";
 
   }
 
 
-  /* =========================
-     CERRAR MODAL
-  ========================= */
-
   function cerrarModal() {
 
-    modalFondo.classList.remove("visible");
+    modalFondo.classList.remove(
+      "visible"
+    );
 
-    document.body.style.overflow = "";
+    document.body.style.overflow =
+      "";
 
     tareaActual = null;
+
+  }
+
+
+  function actualizarBotonFavoritoModal() {
+
+    if (!tareaActual) return;
+
+
+    const esFavorita =
+      favoritos.includes(
+        tareaActual.id
+      );
+
+
+    modalFavorito.textContent =
+      esFavorita
+        ? "★ Quitar de favoritos"
+        : "☆ Agregar a favoritos";
+
+
+    modalFavorito.classList.toggle(
+      "favorito-activo",
+      esFavorita
+    );
 
   }
 
@@ -1633,7 +2321,8 @@
     evento => {
 
       if (
-        evento.target === modalFondo
+        evento.target ===
+        modalFondo
       ) {
 
         cerrarModal();
@@ -1650,7 +2339,9 @@
 
       if (
         evento.key === "Escape" &&
-        modalFondo.classList.contains("visible")
+        modalFondo.classList.contains(
+          "visible"
+        )
       ) {
 
         cerrarModal();
@@ -1660,10 +2351,6 @@
     }
   );
 
-
-  /* =========================
-     FAVORITO DESDE MODAL
-  ========================= */
 
   modalFavorito.addEventListener(
     "click",
@@ -1681,35 +2368,47 @@
   );
 
 
-  /* =========================
-     COPIAR TAREA
-  ========================= */
+  /* =====================================
+     COPIAR
+  ===================================== */
 
-  function generarTextoParaCopiar(tarea) {
+  function generarTextoParaCopiar(
+    tarea
+  ) {
 
     let texto = "";
 
     texto += `${tarea.tarea}\n\n`;
 
-    texto += `MÓDULO\n${tarea.modulo}\n\n`;
+    texto += `MÓDULO\n`;
+    texto += `${tarea.modulo}\n\n`;
 
-    texto += `ETAPA\n${tarea.etapa}\n\n`;
+    texto += `ETAPA\n`;
+    texto += `${tarea.etapa}\n\n`;
 
-    texto += `TEMAS\n${tarea.temas.join(" · ")}\n\n`;
+    texto += `TEMAS\n`;
+    texto += `${tarea.temas.join(" · ")}\n\n`;
 
-    texto += `VARIACIONES\n${tarea.variaciones.join(" · ")}\n\n`;
+    texto += `VARIACIONES\n`;
+    texto += `${tarea.variaciones.join(" · ")}\n\n`;
 
-    texto += `ENFOQUE\n${tarea.enfoque}\n\n`;
+    texto += `ENFOQUE\n`;
+    texto += `${tarea.enfoque}\n\n`;
 
-    texto += `TIPO DE TAREA\n${tarea.tipoTarea}\n\n`;
+    texto += `TIPO DE TAREA\n`;
+    texto += `${tarea.tipoTarea}\n\n`;
 
-    texto += `FRECUENCIA\n${tarea.frecuencia}\n\n`;
+    texto += `FRECUENCIA\n`;
+    texto += `${tarea.frecuencia}\n\n`;
 
-    texto += `MATERIALES\n${tarea.materiales}\n\n`;
+    texto += `MATERIALES\n`;
+    texto += `${tarea.materiales}\n\n`;
 
-    texto += `¿EN QUÉ CONSISTE?\n${tarea.consiste}\n\n`;
+    texto += `¿EN QUÉ CONSISTE?\n`;
+    texto += `${tarea.consiste}\n\n`;
 
-    texto += `OBJETIVO\n${tarea.objetivo}\n\n`;
+    texto += `OBJETIVO\n`;
+    texto += `${tarea.objetivo}\n\n`;
 
     texto += `INDICACIONES\n`;
 
@@ -1734,8 +2433,8 @@
     );
 
 
-    texto +=
-      `\nPARA REVISAR EN SESIÓN\n${tarea.revision}`;
+    texto += `\nPARA REVISAR EN SESIÓN\n`;
+    texto += `${tarea.revision}`;
 
 
     return texto;
@@ -1749,7 +2448,9 @@
 
 
     const texto =
-      generarTextoParaCopiar(tareaActual);
+      generarTextoParaCopiar(
+        tareaActual
+      );
 
 
     try {
@@ -1763,15 +2464,21 @@
     } catch {
 
       const area =
-        document.createElement("textarea");
+        document.createElement(
+          "textarea"
+        );
 
       area.value = texto;
 
-      document.body.appendChild(area);
+      document.body.appendChild(
+        area
+      );
 
       area.select();
 
-      document.execCommand("copy");
+      document.execCommand(
+        "copy"
+      );
 
       area.remove();
 
@@ -1791,30 +2498,43 @@
   function mostrarAvisoCopiado() {
 
     const aviso =
-      document.getElementById("avisoCopiado");
-
-
-    aviso.classList.add("visible");
-
-
-    setTimeout(() => {
-
-      aviso.classList.remove(
-        "visible"
+      document.getElementById(
+        "avisoCopiado"
       );
 
-    }, 1800);
+
+    aviso.classList.add(
+      "visible"
+    );
+
+
+    setTimeout(
+      () => {
+
+        aviso.classList.remove(
+          "visible"
+        );
+
+      },
+      1800
+    );
 
   }
 
 
-  /* =========================
-     EVENTOS
-  ========================= */
+  /* =====================================
+     EVENTOS DE FILTROS
+  ===================================== */
 
   buscador.addEventListener(
     "input",
-    mostrarTareas
+    () => {
+
+      paginaActual = 1;
+
+      mostrarTareas();
+
+    }
   );
 
 
@@ -1825,19 +2545,29 @@
     filtroVariacion,
     filtroEnfoque,
     filtroTipo
-  ].forEach(filtro => {
+  ].forEach(
+    filtro => {
 
-    filtro.addEventListener(
-      "change",
-      mostrarTareas
-    );
+      filtro.addEventListener(
+        "change",
+        () => {
 
-  });
+          paginaActual = 1;
+
+          mostrarTareas();
+
+        }
+      );
+
+    }
+  );
 
 
-  /* =========================
+  /* =====================================
      INICIAR
-  ========================= */
+  ===================================== */
+
+  actualizarBotonFavoritos();
 
   mostrarTareas();
 
